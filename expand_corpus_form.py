@@ -1,9 +1,9 @@
-import json
 import os
-import re
+import json
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 
+# 处理HTML文件夹中的文件
 def sanitize_filename(filename):
     """
     去除文件名中的非法字符。
@@ -20,18 +20,18 @@ def extract_infobox(soup):
     infobox = soup.find('table', {'class': 'infobox'})
     if infobox is None:
         return None
-    
+
     rows = infobox.find_all('tr')
     infobox_data = {}
     current_section = None
-    
+
     for row in rows:
         header = row.find('th')
         data = row.find('td')
-        
+
         if header and data:
-            header_text = header.text.strip()
-            data_text = ' | '.join([line for line in data.stripped_strings])
+            header_text = str(header.text.strip())
+            data_text = str(' | '.join([line for line in data.stripped_strings]))
             if header_text:
                 if current_section is None:
                     current_section = header_text
@@ -39,9 +39,9 @@ def extract_infobox(soup):
                 else:
                     infobox_data[current_section][header_text] = data_text
         elif header:
-            current_section = header.text.strip()
+            current_section = str(header.text.strip())
             infobox_data[current_section] = {}
-    
+
     return infobox_data
 
 def extract_text_from_html(soup):
@@ -73,6 +73,7 @@ def extract_text_from_html(soup):
                 lines.append(paragraph_text)
 
     return "\n\n".join(lines)
+
 
 def get_wikipedia_content_from_file(title, url, html_dir):
     """
@@ -140,21 +141,14 @@ def get_wikipedia_content_from_file(title, url, html_dir):
 
     return text_data, infobox_data, tables_data_list
 
-def process_dataset(input_file, 
-                    text_output_file, 
-                    infobox_output_file, 
-                    tables_output_file, 
-                    html_dir):
+        
+def process_html_folder(html_dir, 
+                        text_output_file, 
+                        infobox_output_file, 
+                        tables_output_file):
     """
-    读取 input_file 的数据集，依次根据 gold_evidences 的标题，从本地的 HTML 文件中
-    提取正文、infobox、table，然后写入相应的输出文件。
-
-    为每个提取的 element（text/infobox/table）分配一个独立的 id。
-    并使用cache，避免重复读取同一个HTML文件。
+    遍历 HTML 文件夹中所有 HTML 文件，提取 text_data, infobox_data, tables_data 并保存到 JSON 文件。
     """
-    with open(input_file, 'r', encoding='utf-8') as f:
-        dataset = json.load(f)
-
     text_results = []
     infobox_results = []
     tables_results = []
@@ -163,51 +157,74 @@ def process_dataset(input_file,
     infobox_id_count = 0
     table_id_count = 0
 
-    # 用于缓存已读取过的 title -> (text_data, infobox_data, tables_data_list)
-    cache_dict = {}
+    for file_name in tqdm(os.listdir(html_dir), desc="Processing HTML files"):
+        if not file_name.endswith('.html'):
+            continue
 
-    for element in tqdm(dataset, desc="Processing datasets"):
-        for evidence in element.get('gold_evidences', []):
-            url = evidence.get('meta', {}).get('url', '')
-            title = evidence.get('title', '')
+        file_path = os.path.join(html_dir, file_name)
+        title = str(file_name.replace('_', ' ').replace('.html', ''))
+        url = str(f"https://en.wikipedia.org/wiki/{title.replace(' ', '_')}")
 
-            if not url or not title:
-                continue
+        with open(file_path, 'r', encoding='utf-8') as f:
+            html_content = f.read()
 
-            # 判断是否已在缓存中
-            if title in cache_dict:
-                text_data, infobox_data, tables_data_list = cache_dict[title]
-            else:
-                # 若不在缓存中，则读取文件并存入缓存
-                text_data, infobox_data, tables_data_list = get_wikipedia_content_from_file(
-                    title, url, html_dir
-                )
-                cache_dict[title] = (text_data, infobox_data, tables_data_list)
+        soup = BeautifulSoup(html_content, 'html.parser')
 
-            if text_data is None:
-                # 文件不存在或读取失败
-                continue
+        # 提取正文
+        text_string = extract_text_from_html(soup)
+        text_data = {
+            "title": title,
+            "url": url,
+            "contents": str(text_string),
+            "id": f"expanded_text_{text_id_count}"
+        }
+        text_results.append(text_data)
+        text_id_count += 1
 
-            # 1) 给 text_data 分配 ID 并去重
-            if text_data not in text_results:
-                text_data["id"] = f"text_{text_id_count}"
-                text_id_count += 1
-                text_results.append(text_data)
+        # 提取 infobox
+        infobox_dict = extract_infobox(soup)
+        if infobox_dict:
+            infobox_data = {
+                "title": title,
+                "url": url,
+                "contents": str({key: str(value) for key, value in infobox_dict.items()}),
+                "id": f"expanded_infobox_{infobox_id_count}"
+            }
+            infobox_results.append(infobox_data)
+            infobox_id_count += 1
+            
 
-            # 2) 给 infobox_data 分配 ID 并去重
-            if infobox_data not in infobox_results:
-                infobox_data["id"] = f"infobox_{infobox_id_count}"
-                infobox_id_count += 1
-                infobox_results.append(infobox_data)
+        # 提取表格
+        content_div = soup.find('div', class_='mw-parser-output')
+        if content_div:
+            tables = content_div.find_all('table', {'class': 'wikitable'})
+            for idx, table in enumerate(tables):
+                headers = [
+                    str(header_cell.get_text(separator=" ", strip=True))
+                    for header_cell in table.find_all('th')
+                ]
+                rows = []
+                table_rows = table.find_all('tr')
+                for row in table_rows[1:]:
+                    row_cells = [
+                        str(cell.get_text(separator=" ", strip=True))
+                        for cell in row.find_all(['td', 'th'])
+                    ]
+                    rows.append(row_cells)
 
-            # 3) 给 tables_data_list 里的每个表分配 ID，并去重
-            for tbl in tables_data_list:
-                if tbl not in tables_results:
-                    tbl["id"] = f"table_{table_id_count}"
-                    table_id_count += 1
-                    tables_results.append(tbl)
+                table_item = {
+                    "title": title,
+                    "url": url,
+                    "contents": str({
+                        "columns": headers,
+                        "rows": rows
+                    }),
+                    "id": f"expanded_table_{table_id_count}"
+                }
+                tables_results.append(table_item)
+                table_id_count += 1
 
-    # 写入文件
+    # 写入 JSON 文件
     with open(text_output_file, 'w', encoding='utf-8') as f:
         json.dump(text_results, f, ensure_ascii=False, indent=4)
 
@@ -217,18 +234,16 @@ def process_dataset(input_file,
     with open(tables_output_file, 'w', encoding='utf-8') as f:
         json.dump(tables_results, f, ensure_ascii=False, indent=4)
 
-# 示例主函数
+# 主函数
 if __name__ == "__main__":
-    input_file = "merged_dataset.json"
-    text_output_file = "text_content.json"
-    infobox_output_file = "infobox_content.json"
-    tables_output_file = "tables_content.json"
-    html_directory = "wikipedia_html"
+    html_directory = "wikipedia_expanded_html"
+    text_output_file = "expanded_text_content.json"
+    infobox_output_file = "expanded_infobox_content.json"
+    tables_output_file = "expanded_tables_content.json"
 
-    process_dataset(
-        input_file, 
-        text_output_file, 
-        infobox_output_file, 
-        tables_output_file, 
-        html_directory
+    process_html_folder(
+        html_dir=html_directory,
+        text_output_file=text_output_file,
+        infobox_output_file=infobox_output_file,
+        tables_output_file=tables_output_file
     )

@@ -7,7 +7,6 @@ import spacy
 # 参数配置
 MAX_TOKENS_PER_CHUNK = 100  # 每个 chunk 的最大 token 数
 OVERLAP_TOKENS = 0  # 每个 chunk 的重叠 token 数
-MAX_TOTAL_TOKENS = 8192  # 支持更长的文本上下文
 
 # 加载 Hugging Face 分词器和 spacy 模型
 tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")  # 替换为所需的分词器模型
@@ -19,13 +18,7 @@ def load_data_from_json(file_path):
         data = json.load(file)
     valid_data = []
     for entry in data:
-        if (
-            "id" in entry
-            and "content" in entry
-            and isinstance(entry["content"], list)
-            and all(isinstance(item, str) for item in entry["content"])
-            and " ".join(entry["content"]).strip()
-        ):
+        if "id" in entry and "contents" in entry and isinstance(entry["contents"], str) and entry["contents"].strip():
             valid_data.append(entry)
         else:
             print(f"跳过无效条目: {entry}")
@@ -35,19 +28,16 @@ def load_data_from_json(file_path):
 def chunk_dataset(dataset, tokenizer, max_tokens, overlap):
     chunks = []
     for entry in tqdm(dataset, desc="Processing entries"):
-        content_list = entry["content"]
+        content = entry["contents"]
         entry_id = entry["id"]
 
-        # 合并 content 列表为单个字符串
-        text = " ".join([str(item) for item in content_list if isinstance(item, str)]).strip()
-
-        # 如果 text 为空，跳过该 entry
-        if not text:
+        # 如果 content 为空，跳过该 entry
+        if not content.strip():
             print(f"跳过无效内容: ID={entry_id}")
             continue
 
         # 按句子分割
-        sentences = split_into_sentences(text)
+        sentences = split_into_sentences(content)
 
         # 按句子拼接到 chunk
         current_chunk = []
@@ -60,9 +50,9 @@ def chunk_dataset(dataset, tokenizer, max_tokens, overlap):
             if current_length + sentence_length > max_tokens:
                 chunk_text = " ".join(current_chunk)
                 chunks.append({
-                    "chunk_id": f"{entry_id}_chunk_{len(chunks) + 1}",
+                    "id": f"{entry_id}_chunk_{len(chunks) + 1}",
                     "original_id": entry_id,
-                    "chunk_content": chunk_text
+                    "contents": chunk_text
                 })
                 current_chunk = []
                 current_length = 0
@@ -74,23 +64,23 @@ def chunk_dataset(dataset, tokenizer, max_tokens, overlap):
         if current_chunk:
             chunk_text = " ".join(current_chunk)
             chunks.append({
-                "chunk_id": f"{entry_id}_chunk_{len(chunks) + 1}",
+                "id": f"{entry_id}_chunk_{len(chunks) + 1}",
                 "original_id": entry_id,
-                "chunk_content": chunk_text
+                "contents": chunk_text
             })
 
     # 处理 chunk 重叠
     final_chunks = []
     for i, chunk in enumerate(tqdm(chunks, desc="Processing chunks")):
-        chunk_content = chunk["chunk_content"]  # 从字典中提取 chunk 内容
+        chunk_content = chunk["contents"]  # 从字典中提取 chunk 内容
         if not isinstance(chunk_content, str):
             raise TypeError(f"Expected a string for chunk_content, but got {type(chunk_content)}: {chunk_content}")
 
         if i > 0 and overlap > 0:
-            prev_tokens = tokenizer(final_chunks[-1]["chunk_content"], add_special_tokens=False)["input_ids"][-overlap:]
+            prev_tokens = tokenizer(final_chunks[-1]["contents"], add_special_tokens=False)["input_ids"][-overlap:]
             current_tokens = tokenizer(chunk_content, add_special_tokens=False)["input_ids"]
             combined_tokens = prev_tokens + current_tokens
-            chunk["chunk_content"] = tokenizer.decode(combined_tokens)
+            chunk["contents"] = tokenizer.decode(combined_tokens)
 
         final_chunks.append(chunk)
 
@@ -104,7 +94,7 @@ def split_into_sentences(text):
 
 # 主流程
 def main():
-    file_path = "text_content_updated.json"
+    file_path = "text_content_updated.json"  # 替换为实际文件路径
     dataset = load_data_from_json(file_path)
 
     # 执行分块
