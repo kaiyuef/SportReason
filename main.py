@@ -1,8 +1,10 @@
 import argparse
 import json
 from pipeline import qa_pipeline
+from dotenv import load_dotenv
+load_dotenv()
 
-def process_dataset(input_file, output_file, index_path, retriever_name, reader_model_name, top_k=5):
+def process_dataset(input_file, output_dir, index_path, retriever_name, reader_model_name, top_k=5):
     """
     处理数据集，执行 QA 流程，并将结果保存到新的 JSON 文件。
     """
@@ -11,7 +13,7 @@ def process_dataset(input_file, output_file, index_path, retriever_name, reader_
 
     results = []
 
-    for entry in dataset[390:410]:
+    for entry in dataset:
         seed_question = entry.get("seed_question", "")
         entry_id = entry.get("id", "")
 
@@ -30,12 +32,23 @@ def process_dataset(input_file, output_file, index_path, retriever_name, reader_
             top_k=top_k
         )
 
+        # 提取检索到的 evidence IDs
+        retrieved_evidence_ids = [doc["id"] for doc in output.get("retrieved_docs", [])]
+
         # 将结果保存到结果列表中
         results.append({
             "id": entry_id,
             "seed_question": seed_question,
-            "pipeline_output": output
+            "pipeline_output": {
+                "query": output["query"],
+                "answer": output["answer"],
+                "documents_used": output["documents_used"],
+                "retrieved_evidence_ids": retrieved_evidence_ids
+            }
         })
+
+    # 根据 retriever 和 reader 动态生成输出文件名
+    output_file = f"{output_dir}/{retriever_name}_{reader_model_name}.json"
 
     # 保存结果到输出文件
     with open(output_file, "w") as outfile:

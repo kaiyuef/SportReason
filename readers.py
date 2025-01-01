@@ -1,13 +1,17 @@
+import os
 from huggingface_hub import InferenceClient
-
-API_KEY = "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"
 
 class HuggingFaceReader:
     """
     通用 Hugging Face Reader
     """
     def __init__(self, model_name):
-        self.client = InferenceClient(api_key=API_KEY)
+        # 从环境变量加载 API_KEY
+        self.api_key = os.environ.get("HUGGINGFACE_API_KEY")
+        if not self.api_key:
+            raise ValueError("API key not found. Please set the 'HUGGINGFACE_API_KEY' environment variable.")
+        
+        self.client = InferenceClient(api_key=self.api_key)
         self.model_name = model_name
 
     def generate_answer(self, query, retrieved_docs):

@@ -35,4 +35,10 @@ def qa_pipeline(query, index_path, retriever_name, reader_model_name, top_k=5):
     print(f"Answer: {final_answer['answer']}")
     print(f"Documents Used: {final_answer['documents_used']}\n")
 
-    return final_answer
+    # 返回检索和生成的完整输出
+    return {
+        "query": final_answer["query"],
+        "answer": final_answer["answer"],
+        "documents_used": final_answer["documents_used"],
+        "retrieved_docs": retrieved_docs  # 包含检索到的文档详细信息
+    }
