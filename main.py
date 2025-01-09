@@ -13,7 +13,7 @@ def process_dataset(input_file, output_dir, index_path, retriever_name, reader_m
 
     results = []
 
-    for entry in dataset:
+    for entry in dataset[390:410]:
         seed_question = entry.get("seed_question", "")
         entry_id = entry.get("id", "")
 
@@ -58,19 +58,22 @@ def process_dataset(input_file, output_dir, index_path, retriever_name, reader_m
 
 
 if __name__ == "__main__":
-
+    '''
+    index list: lucene-index feiss-index
+    retriever list: bm25, contriever
+    reader list: huggingface-qwen, huggingface-llama
+    '''
     input_file = "merged_dataset.json"
-    output_file = "sample_dataset_results.json"
-    index_path = "indexes/lucene-index"
+    index_path = "indexes/feiss-index"
     retriever = "bm25"
-    reader_model = "huggingface-qwen"
+    reader_model = "huggingface-llama"
     top_k = 5
     
     process_dataset(
         input_file=input_file,
-        output_file=output_file,
+        output_dir="answer_results",
         index_path=index_path,
         retriever_name=retriever,
+        reranker_name="bge",
         reader_model_name=reader_model,
-        top_k=top_k
     )

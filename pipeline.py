@@ -1,18 +1,24 @@
 from retrievers import retrieve_bm25, retrieve_contriever
 from readers import HuggingFaceReader
+from reranker import bge
 
 retrievers = [
     {"name": "bm25", "function": retrieve_bm25},
     {"name": "contriever", "function": retrieve_contriever}
 ]
 
-reader_models = [
-    {"name": "huggingface-qwen", "model_name": "Qwen/Qwen2.5-Coder-32B-Instruct"},
-    {"name": "huggingface-llama", "model_name": "meta-llama/Llama-2-7b-chat"}
+rerankers = [
+    {"name": "bge", "function": bge}
 ]
 
-def qa_pipeline(query, index_path, retriever_name, reader_model_name, top_k=5):
+reader_models = [
+    {"name": "huggingface-qwen", "model_name": "Qwen/Qwen2.5-Coder-32B-Instruct"},
+    {"name": "huggingface-llama", "model_name": "meta-llama/Llama-3.1-8B-Instruct"}
+]
+
+def qa_pipeline(query, index_path, retriever_name, reranker_name, reader_model_name, top_k=100):
     retriever = next((r for r in retrievers if r["name"] == retriever_name), None)
+    reranker = next((k for k in rerankers if k["name"] == reranker_name), None)
     reader_model = next((m for m in reader_models if m["name"] == reader_model_name), None)
 
     if not retriever:
@@ -25,10 +31,13 @@ def qa_pipeline(query, index_path, retriever_name, reader_model_name, top_k=5):
 
     print("\n[Retriever] Retrieving relevant documents...")
     retrieved_docs = retriever["function"](query, index_path, top_k)
+    
+    print("\n[Reranker] Reranking retrieved documents...")
+    reranked_docs = reranker["function"](query, retrieved_docs)
 
     print("\n[Reader] Generating answers from all retrieved documents...")
     reader = HuggingFaceReader(model_name=reader_model["model_name"])
-    final_answer = reader.generate_answer(query, retrieved_docs)
+    final_answer = reader.generate_answer(query, reranked_docs)
 
     print("\n[Final Answer]")
     print(f"Query: {final_answer['query']}")

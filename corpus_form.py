@@ -12,6 +12,60 @@ def sanitize_filename(filename):
     sanitized = re.sub(invalid_chars, '_', filename)
     return sanitized.strip()
 
+def sanitize_content_string(content_str):
+    """
+    清洗字符串中的多余空白和换行符，将其统一替换为一个空格，并去除首尾空格。
+    """
+    if not isinstance(content_str, str):
+        return content_str
+    # 用正则去掉所有连续的空白字符（包括 \n \r \t 等），并替换为单个空格
+    return re.sub(r'\s+', ' ', content_str).strip()
+
+def sanitize_infobox_dict(info_dict):
+    """
+    递归清洗 infobox 字典中的字符串内容。
+    """
+    if not isinstance(info_dict, dict):
+        return info_dict
+    
+    cleaned_dict = {}
+    for key, value in info_dict.items():
+        if isinstance(value, dict):
+            # 如果 value 还是一个字典，则递归处理
+            cleaned_dict[key] = sanitize_infobox_dict(value)
+        elif isinstance(value, str):
+            # 如果 value 是字符串，调用字符串清洗
+            cleaned_dict[key] = sanitize_content_string(value)
+        else:
+            cleaned_dict[key] = value
+    return cleaned_dict
+
+def sanitize_table_item(tbl_item):
+    """
+    对表格的 columns 和 rows 里所有字符串内容进行清洗。
+    """
+    if not tbl_item or not isinstance(tbl_item, dict):
+        return tbl_item
+    
+    contents = tbl_item.get("contents", {})
+    if not isinstance(contents, dict):
+        return tbl_item
+    
+    # 清洗 columns
+    columns = contents.get("columns", [])
+    columns_cleaned = [sanitize_content_string(col) for col in columns]
+    
+    # 清洗 rows
+    rows = contents.get("rows", [])
+    rows_cleaned = []
+    for row in rows:
+        cleaned_row = [sanitize_content_string(cell) for cell in row]
+        rows_cleaned.append(cleaned_row)
+    
+    tbl_item["contents"]["columns"] = columns_cleaned
+    tbl_item["contents"]["rows"] = rows_cleaned
+    return tbl_item
+
 def extract_infobox(soup):
     """
     从 HTML 中查找 class=infobox 的表格，并解析其中的内容。
@@ -94,6 +148,8 @@ def get_wikipedia_content_from_file(title, url, html_dir):
     
     # 1) 正文
     text_string = extract_text_from_html(soup)
+    # 在这里对提取到的正文进行清洗
+    text_string = sanitize_content_string(text_string)
     text_data = {
         "title": title,
         "url": url,
@@ -102,10 +158,14 @@ def get_wikipedia_content_from_file(title, url, html_dir):
 
     # 2) infobox
     infobox_dict = extract_infobox(soup)
+    if infobox_dict is None:
+        infobox_dict = {}
+    # 对 infobox 中的值进行清洗
+    infobox_dict = sanitize_infobox_dict(infobox_dict)
     infobox_data = {
         "title": title,
         "url": url,
-        "contents": infobox_dict if infobox_dict else {}
+        "contents": infobox_dict
     }
 
     # 3) tables
@@ -136,6 +196,8 @@ def get_wikipedia_content_from_file(title, url, html_dir):
                     "rows": rows
                 }
             }
+            # 表格内容清洗
+            table_item = sanitize_table_item(table_item)
             tables_data_list.append(table_item)
 
     return text_data, infobox_data, tables_data_list
