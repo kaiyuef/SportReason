@@ -1,75 +1,246 @@
-import json
-import re
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Robust merger for multiple QA-style datasets (json / jsonl, possibly indented).
+Ensures evidence-ID uniqueness with content-aware logic (type_000001 格式)
+and outputs JSONL.
 
-# 读取三个 JSON 文件
-with open('processed/tanq/new_tanq_reformatted.json', 'r') as file1, open('processed/templeqa/newer_dev_sports_reformatted.json', 'r') as file3, open('processed/hybrid/new_dev_hybrid.json', 'r') as file2:
-    data1 = json.load(file1)
-    data2 = json.load(file2)
-    data3 = json.load(file3)
+修订日期: 2025-04-28
+"""
 
-# 从每个数据集中顺序取 200 条数据
-sample_size = 200
-sampled_data1 = data1[:sample_size]
-sampled_data2 = data2[:sample_size]
-sampled_data3 = data3[:sample_size]
+import ast, json, random, hashlib, re
+from pathlib import Path
+from collections import Counter, defaultdict
+from copy import deepcopy
+from typing import Dict, List, Tuple
 
-# 合并三个数据集
-merged_data = sampled_data1 + sampled_data2 + sampled_data3
+# ---------------------------------------------------------------------
+# Config
+# ---------------------------------------------------------------------
+SAMPLE_SIZE      = 600            # 每个数据集抽样数量；None=全部
+RANDOM_SAMPLING  = False          # True ➜ random.sample
+INPUT_FILES      = [
+    "regenerate_combine/new_hybrid_aligned.jsonl",
+    "regenerate_combine/new_TANQ.jsonl",
+    "regenerate_combine/merged_temptableqa.jsonl",
+]
+OUTPUT_FILE      = "regenerate_combine/reformatted_merged_dataset1.jsonl"
+BAD_LINES_LOG    = "regenerate_combine/bad_lines.log"      # 解析失败行
 
-# 用于存储所有已使用的 id
-id_set = set()
+# ---------------------------------------------------------------------
+# 全局注册表
+# ---------------------------------------------------------------------
+sample_id_pool: set[str] = set()
 
-# 生成唯一的 evidence id，保持原前缀
-def generate_unique_evidence_id(base_id, id_set):
-    match = re.match(r"([a-zA-Z_]+)(\d+)", base_id)
-    if not match:
-        return base_id  # 如果没有匹配到数字部分，则保持原 id 不变
-    prefix, number = match.groups()  # 提取前缀和数字
-    new_id = base_id
-    new_number = int(number) + 1  # 增加数字部分
-    while new_id in id_set:
-        new_id = f"{prefix}{new_number}"
-        new_number += 1
-    id_set.add(new_id)
-    return new_id
+EvidenceInfo = Tuple[str, int]           # (content_hash, source_file_index)
+evidence_registry: Dict[str, EvidenceInfo] = {}            # evidence_id → (hash, file_idx)
+prefix_counters: defaultdict[str, int] = defaultdict(int)  # 生成新 id 用
 
-# 生成唯一的 sample id 以数字递增
-def generate_unique_sample_id(base_id, id_set):
-    new_id = base_id
-    while new_id in id_set:
-        new_id += 1  # 简单地递增数字，直到找到唯一的 id
-    id_set.add(new_id)
-    return new_id
+# ---------------------- 基础工具 ----------------------
+def next_sample_id() -> str:
+    idx = len(sample_id_pool) + 1
+    sid = f"sample_{idx}"
+    sample_id_pool.add(sid)
+    return sid
 
-# 对合并数据进行处理，保持 gold_evidence_ids 和 gold_evidences 中的 id 唯一且同步，同时确保 sample id 唯一
-for i, item in enumerate(merged_data):
-    # 生成唯一的 sample id
-    original_id = item.get('id', i)
-    if original_id in id_set:
-        item['id'] = generate_unique_sample_id(original_id, id_set)
-    else:
-        id_set.add(original_id)
+def sha1(content: str) -> str:
+    return hashlib.sha1(content.encode("utf-8")).hexdigest()
 
-    # 构建 gold_evidences 中的 id 到 index 的映射，方便同步修改
-    evidence_id_map = {evidence['id']: idx for idx, evidence in enumerate(item.get('gold_evidences', []))}
+def serialise(value) -> str:
+    """把 dict/list 转成有序 JSON 字符串；原始 str 保持不变"""
+    if isinstance(value, (dict, list)):
+        return json.dumps(value, sort_keys=True, ensure_ascii=False)
+    return str(value)
 
-    # 处理 gold_evidence_ids 和 gold_evidences，保证 id 同步且唯一
-    for j, evidence_id in enumerate(item.get('gold_evidence_ids', [])):
-        evidence = item['gold_evidences'][evidence_id_map[evidence_id]]
+# ---------------------- Evidence ID 逻辑 ----------------------
+# 旧格式: table000001 / text023, 新格式: table_000001 / text_000023
+_prefix_pat = re.compile(r"^([A-Za-z]+)")
 
-        # 确保 gold_evidence_ids 和 gold_evidences 中的 id 保持同步
-        if evidence_id in id_set:
-            # 如果该 id 已在全局使用，则生成唯一的 id 并同步到 evidence 中
-            new_evidence_id = generate_unique_evidence_id(evidence_id, id_set)
-            item['gold_evidence_ids'][j] = new_evidence_id
-            evidence['id'] = new_evidence_id
-        else:
-            # 如果该 id 没有被使用，直接将其添加到 id_set 中，并保持同步
-            id_set.add(evidence_id)
-            evidence['id'] = evidence_id  # 保证 gold_evidence_ids 和 gold_evidences 中的 id 同步
+def infer_prefix(eid: str, ev_dict: dict | None = None) -> str:
+    """优先从 eid 抽取；否则从 ev['type']；再否则 'misc'"""
+    if "_" in eid:
+        return eid.split("_", 1)[0]
+    m = _prefix_pat.match(eid)
+    if m:
+        return m.group(1)
+    if ev_dict and ev_dict.get("type"):
+        return ev_dict["type"]
+    return "misc"
 
-# 将合并后的数据保存到一个新的 JSON 文件
-with open('reformated_merged_dataset.json', 'w') as outfile:
-    json.dump(merged_data, outfile, indent=4)
+def new_evidence_id(old_id: str, ev_dict: dict | None = None) -> str:
+    """生成同前缀、带下划线的新 id，例: table_000123"""
+    prefix = infer_prefix(old_id, ev_dict)
+    prefix_counters[prefix] += 1
+    return f"{prefix}_{prefix_counters[prefix]:06d}"
 
-print("顺序采样并合并完成，已保存为 merged_dataset.json")
+# ---------------------- JSON / JSONL 读取 ----------------------
+def balanced(buf: str) -> bool:
+    """判断 buf 中 { } 是否配平（忽略字符串字面量）"""
+    level, in_str, esc = 0, False, False
+    for ch in buf:
+        if esc:
+            esc = False
+            continue
+        if ch == '\\':
+            esc = True
+            continue
+        if ch == '"':
+            in_str = not in_str
+            continue
+        if in_str:
+            continue
+        if ch == '{':
+            level += 1
+        elif ch == '}':
+            level -= 1
+    return level == 0
+
+def load_dataset(path: str, idx: int) -> List[dict]:
+    """支持 .json / .jsonl（多行 JSON）"""
+    data, bad = [], []
+    if path.endswith(".jsonl"):
+        buf = ""
+        with open(path, encoding="utf-8") as fp:
+            for ln_no, line in enumerate(fp, 1):
+                if not line.strip():
+                    continue
+                buf += line
+                if balanced(buf):
+                    chunk = buf.strip()
+                    buf = ""
+                    try:
+                        obj = json.loads(chunk)
+                    except json.JSONDecodeError:
+                        try:
+                            obj = ast.literal_eval(chunk)
+                        except Exception:
+                            bad.append((ln_no, chunk[:120]))
+                            continue
+                    obj["_source_file_index"] = idx
+                    data.append(obj)
+        if buf:  # EOF 残留
+            bad.append(("EOF", buf[:120]))
+    else:  # .json（列表）
+        with open(path, encoding="utf-8") as fp:
+            raw_list = json.load(fp)
+        for obj in raw_list:
+            obj["_source_file_index"] = idx
+            data.append(obj)
+
+    if bad:
+        with open(BAD_LINES_LOG, "a", encoding="utf-8") as flog:
+            for ln, snippet in bad:
+                flog.write(f"{path}  line:{ln}\n{snippet}\n\n")
+    return data
+
+# ---------------------- Evidence 处理 ----------------------
+def detect_evidence_type(eid: str, ev: dict | None = None) -> str:
+    """根据 id 或显式字段推断 type"""
+    if ev and "type" in ev:
+        return ev["type"]
+    prefix = infer_prefix(eid, ev)
+    if prefix in {"table", "infobox", "text"}:
+        return prefix
+    return "text"   # 默认
+
+def process_evidence(ev: dict, src_idx: int) -> Tuple[str, dict]:
+    """
+    归一化 evidence:
+      1) content 序列化 ➜ hash
+      2) 解决重复 id ➜ 生成新 id（type_000001）
+      3) content 保证为 str
+    """
+    ev = deepcopy(ev)
+
+    # ---------- content / hash ----------
+    raw_content = ev.get("content", ev.get("evidence_text", ""))
+    content_str = serialise(raw_content)
+    h = sha1(content_str)
+
+    # ---------- 基准 id ----------
+    if "id" not in ev or not ev["id"]:
+        ev["id"] = new_evidence_id(ev.get("type", "misc"), ev)  # 推断前缀
+    eid = ev["id"]
+
+    # ---------- 冲突检测 ----------
+    if eid in evidence_registry:
+        prev_hash, prev_src = evidence_registry[eid]
+        need_new = (prev_src != src_idx) or (prev_hash != h)
+        if need_new:
+            eid = new_evidence_id(eid, ev)
+
+    # ---------- 注册 & 内容归一化 ----------
+    evidence_registry[eid] = (h, src_idx)
+    ev["id"] = eid
+    if isinstance(ev.get("content"), (dict, list)):
+        ev["content"] = content_str
+    return eid, ev
+
+# ---------------------- 样本标准化 ----------------------
+def standardise_sample(raw: dict) -> dict:
+    sid = next_sample_id()
+    std = {
+        "id": sid,
+        "seed_question": raw.get("seed_question") or raw.get("question") or "",
+        "seed_dataset": raw.get("seed_dataset") or raw.get("source_file")
+                        or Path(raw.get("_src_path", "dataset")).stem,
+        "seed_answers": (
+            raw.get("seed_answers") or
+            ([raw["seed_answer"]] if "seed_answer" in raw else [])
+        ),
+        "answers": (
+            raw.get("answers") or
+            ([raw["seed_answer"]] if "seed_answer" in raw else [])
+        ),
+        "reasoning_type": raw.get("reasoning_type", "")
+    }
+
+    # ---------- evidence ----------
+    ev_list = (
+        raw.get("gold_evidences") or
+        raw.get("used_evidences") or
+        []
+    )
+    gold_ids, gold_objs, type_counter = [], [], Counter()
+    src_idx = raw["_source_file_index"]
+
+    for ev in ev_list:
+        eid, ev_std = process_evidence(ev, src_idx)
+        gold_ids.append(eid)
+        gold_objs.append(ev_std)
+        type_counter[detect_evidence_type(eid, ev_std)] += 1
+
+    std["gold_evidence_ids"]  = gold_ids
+    std["gold_evidence_type"] = dict(type_counter)
+    std["gold_evidences"]     = gold_objs
+
+    # ---------- meta ----------
+    drop = {
+        "seed_question", "seed_answers", "seed_answer", "seed_dataset",
+        "answers", "used_evidences", "gold_evidences", "gold_evidence_ids",
+        "gold_evidence_type", "id", "reasoning_type",
+        "_source_file_index", "_src_path"
+    }
+    std["meta"] = {k: v for k, v in raw.items() if k not in drop}
+
+    return std
+
+# ---------------------------------------------------------------------
+# 主流程
+# ---------------------------------------------------------------------
+all_samples: List[dict] = []
+for idx, path in enumerate(INPUT_FILES):
+    ds = load_dataset(path, idx)
+    if SAMPLE_SIZE is not None:
+        ds = random.sample(ds, min(SAMPLE_SIZE, len(ds))) if RANDOM_SAMPLING else ds[:SAMPLE_SIZE]
+    for item in ds:
+        item["_src_path"] = path
+        all_samples.append(standardise_sample(item))
+
+# ---------------------- 写出 ----------------------
+with open(OUTPUT_FILE, "w", encoding="utf-8") as fp:
+    for obj in all_samples:
+        fp.write(json.dumps(obj, ensure_ascii=False) + "\n")
+
+print(f"✅ 合并完成：{len(all_samples)} 条样本 ➜ {OUTPUT_FILE}")
+print("⚠️ 若 bad_lines.log 存在内容，请检查无法解析的原始行。")
