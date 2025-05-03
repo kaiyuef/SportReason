@@ -38,6 +38,8 @@ The gold evidence should follow one of the formats below:
     "id": "text_1",
     "title": "Document Title",
     "content": "String content of the text evidence"
+    "URL": "https://en.wikipedia.org/wiki/..."
+    "type": "text"
 }
 ```
 
@@ -50,6 +52,8 @@ The gold evidence should follow one of the formats below:
         "columns": ["Column1", "Column2"],
         "rows": [["Value1", "Value2"], ["Value3", "Value4"]]
     }
+    "URL": "https://en.wikipedia.org/wiki/..."
+    "type": "table"
 }
 ```
 
@@ -63,6 +67,8 @@ The gold evidence should follow one of the formats below:
         "caption": "Caption Text",
         "etc.": "follow the original format"
     }
+    "URL": "https://en.wikipedia.org/wiki/..."
+    "type": "infobox
 }
 ```
 
@@ -71,14 +77,13 @@ Raw HTML should be downloaded directly from Wikipedia and stored for integration
 
 
 
-## Step 2: Process the Dataset with `corpus_form.py`
-Integrate the raw HTML files into the dataset to form a complete corpus.
+## Step 2: Combine the Dataset with `dataset_processing_code/merge_dataset.py`
+Combine and Unify the collected sub-dataset into one
 
 
 
-## Step 3: Verify Evidence with `evidence_exist.py`
-Ensure that all gold evidence listed in the dataset exists within the corpus.
-
+## Step 3: Process the Dataset to Corpus with `HPC_code/dataset2corpus.py`
+Process dataset into seperate corpus of text, table and infobox
 
 
 ## Step 4: Expand Wikipedia Data with `wiki_expand.py`
@@ -98,13 +103,12 @@ Run chunking scripts on text-related JSONL files for efficient storage and proce
 
 ## Step 7: Collect All Processed JSONL Files
 Gather the following JSONL files for downstream tasks:
-1. `chunked_data.jsonl`
-2. `expanded_chunked_data.jsonl`
-3. `expanded_infobox_content.jsonl`
-4. `expanded_tables_content.jsonl`
-5. `infobox_content_updated.jsonl`
-6. `tables_content_updated.jsonl`
 
+
+## Step 8: `Use HPC_code/index_chromadb.py`
+Use this code to encode the corresponding corpus with the desired model (BM25 needs to use HPC_code/index_lucene.py)
+
+## Step 9: Set up the hyperparameters and run `HPC_code/main.slurm`
 
 
 ## File Overview
