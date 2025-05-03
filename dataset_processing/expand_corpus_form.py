@@ -1,170 +1,166 @@
-import os
-import json
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Parse extra HTML files and emit ‘distractor’ corpus in SAME format
+as corpus_text_final.jsonl / corpus_tables_final.jsonl /
+corpus_infobox_final.jsonl, 并在读取时对 TEXT 做 ≤100-token 切块。
+"""
+
+import os, json, re, itertools
+from pathlib import Path
 from bs4 import BeautifulSoup
 from tqdm import tqdm
+import spacy
+from transformers import AutoTokenizer
 
-# 处理HTML文件夹中的文件
-def sanitize_filename(filename):
-    """
-    去除文件名中的非法字符。
-    """
-    invalid_chars = r'[<>:"/\\|?*\n\t]'
-    sanitized = re.sub(invalid_chars, '_', filename)
-    return sanitized.strip()
+# ---------- chunking 配置 ----------
+MAX_TOK_CHUNK = 100
+OVERLAP_TOK   = 0
 
-def extract_infobox(soup):
-    """
-    从 HTML 中查找 class=infobox 的表格，并解析其中的内容。
-    返回一个 dict，每个 section 内部是 {表头: 数据} 的形式。
-    """
-    infobox = soup.find('table', {'class': 'infobox'})
-    if infobox is None:
-        return None
+# 加载 sentence-splitter
+nlp = spacy.load("en_core_web_sm", disable=["ner", "tagger", "parser"])
+if "sentencizer" not in nlp.pipe_names:
+    nlp.add_pipe("sentencizer")
+# 用于计算 token 长度
+_tokenizer = AutoTokenizer.from_pretrained("BAAI/bge-m3")
 
-    rows = infobox.find_all('tr')
-    infobox_data = {}
-    current_section = None
+def sent_split(t: str) -> list[str]:
+    return [s.text.strip() for s in nlp(t).sents if s.text.strip()]
 
-    for row in rows:
-        header = row.find('th')
-        data = row.find('td')
+def token_len(t: str) -> int:
+    return len(_tokenizer(t, add_special_tokens=False)["input_ids"])
 
-        if header and data:
-            header_text = str(header.text.strip())
-            data_text = str(' | '.join([line for line in data.stripped_strings]))
-            if header_text:
-                if current_section is None:
-                    current_section = header_text
-                    infobox_data[current_section] = {header_text: data_text}
-                else:
-                    infobox_data[current_section][header_text] = data_text
-        elif header:
-            current_section = str(header.text.strip())
-            infobox_data[current_section] = {}
+def chunk_text(text: str) -> list[str]:
+    sents = sent_split(text)
+    if not sents:
+        return []
+    max_tok = MAX_TOK_CHUNK
+    overlap = min(OVERLAP_TOK, max_tok - 1)
+    chunks, cur, tok = [], [], 0
+    for s in sents:
+        l = token_len(s)
+        if cur and tok + l > max_tok:
+            chunks.append(" ".join(cur))
+            if overlap:
+                tail_ids = _tokenizer(" ".join(cur), add_special_tokens=False)["input_ids"][-overlap:]
+                ov = _tokenizer.decode(tail_ids)
+                cur, tok = [ov], token_len(ov)
+            else:
+                cur, tok = [], 0
+        cur.append(s)
+        tok += l
+    if cur:
+        chunks.append(" ".join(cur))
+    return chunks
 
-    return infobox_data
+# ---------- util ----------
+def extract_infobox(soup: BeautifulSoup):
+    for table in soup.find_all('table'):
+        if 'infobox' in ' '.join(table.get('class', [])).lower():
+            rows, info, cur = table.find_all('tr'), {}, None
+            for tr in rows:
+                th, td = tr.find('th'), tr.find('td')
+                if th and td:
+                    h = th.get_text(" ", strip=True)
+                    d = ' | '.join(td.stripped_strings)
+                    info.setdefault(cur or h, {})[h] = d
+                elif th:  # section header
+                    cur = th.get_text(" ", strip=True)
+                    info[cur] = {}
+            return info
+    return None
 
-def extract_text_from_html(soup):
-    """
-    从 HTML 中提取正文文本：考虑 h2/h3/h4/p/ul/ol 等标签。
-    可以根据需要添加或删除跳过的 section。
-    """
-    content_div = soup.find('div', class_='mw-parser-output')
-    if not content_div:
+def extract_text(soup: BeautifulSoup):
+    main = soup.find('div', class_='mw-parser-output')
+    if not main:
         return ""
-
-    skip_sections = {"References", "External links", "See also", "Further reading", "Notes"}
-    lines = []
-    skip_rest = False
-
-    for element in content_div.find_all(['h2', 'h3', 'h4', 'p', 'ul', 'ol'], recursive=True):
-        if skip_rest:
-            break
-
-        if element.name in ['h2', 'h3', 'h4']:
-            section_title = element.get_text(strip=True)
-            if section_title in skip_sections:
-                skip_rest = True
-                continue
-            lines.append(f"## {section_title}")
+    stop = {"references", "external links", "see also", "further reading", "notes"}
+    out = []
+    for el in main.find_all(['h2','h3','h4','p','ul','ol','li'], recursive=True):
+        if el.name in {'h2','h3','h4'}:
+            sec = el.get_text(" ", strip=True)
+            if sec.lower() in stop:
+                break
+            out.append(f"## {sec}")
         else:
-            paragraph_text = element.get_text(separator=" ", strip=True)
-            if paragraph_text:
-                lines.append(paragraph_text)
+            t = el.get_text(" ", strip=True)
+            if t:
+                out.append(t)
+    return "\n\n".join(out)
 
-    return "\n\n".join(lines)
+def extract_tables(soup: BeautifulSoup):
+    main = soup.find('div', class_='mw-parser-output')
+    if not main:
+        return []
+    tbls = []
+    for tb in main.find_all('table'):
+        cls = ' '.join(tb.get('class', [])).lower()
+        if 'wikitable' in cls or 'sortable' in cls:
+            hdr = [th.get_text(" ", strip=True) for th in tb.find_all('th')]
+            rows = [
+                [c.get_text(" ", strip=True) for c in tr.find_all(['td','th'])]
+                for tr in tb.find_all("tr")[1:]
+            ]
+            tbls.append({"columns": hdr, "rows": rows})
+    return tbls
 
-def process_html_folder(html_dir, 
-                        text_output_file, 
-                        infobox_output_file, 
-                        tables_output_file):
-    """
-    遍历 HTML 文件夹中所有 HTML 文件，提取 text_data, infobox_data, tables_data 并保存到 JSONL 文件。
-    """
-    text_id_count = 0
-    infobox_id_count = 0
-    table_id_count = 0
+# ---------- core ----------
+def process_html_folder(html_dir, t_out, i_out, tbl_out):
+    id_counters = dict(text=0, infobox=0, table=0)
 
-    with open(text_output_file, 'w', encoding='utf-8') as text_out, \
-         open(infobox_output_file, 'w', encoding='utf-8') as infobox_out, \
-         open(tables_output_file, 'w', encoding='utf-8') as tables_out:
+    def new_id(kind: str) -> str:
+        id_counters[kind] += 1
+        return f"{kind}_exp_{id_counters[kind]:06d}"
 
-        for file_name in tqdm(os.listdir(html_dir), desc="Processing HTML files"):
-            if not file_name.endswith('.html'):
+    with open(t_out,  'w', encoding='utf-8') as f_text, \
+         open(i_out,  'w', encoding='utf-8') as f_info, \
+         open(tbl_out,'w', encoding='utf-8') as f_tbl:
+
+        for fname in tqdm(os.listdir(html_dir), desc="Expanded HTML"):
+            if not fname.endswith('.html'):
                 continue
 
-            file_path = os.path.join(html_dir, file_name)
-            title = str(file_name.replace('_', ' ').replace('.html', ''))
-            url = str(f"https://en.wikipedia.org/wiki/{title.replace(' ', '_')}")
+            title = fname[:-5].replace('_', ' ')
+            url   = f"https://en.wikipedia.org/wiki/{fname[:-5]}"
 
-            with open(file_path, 'r', encoding='utf-8') as f:
-                html_content = f.read()
+            html_path = Path(html_dir) / fname
+            soup = BeautifulSoup(html_path.read_text(encoding='utf-8'), 'html.parser')
 
-            soup = BeautifulSoup(html_content, 'html.parser')
+            # ---------- TEXT with chunking ----------
+            full_text = extract_text(soup)
+            for chunk in chunk_text(full_text):
+                f_text.write(json.dumps({
+                    "id":      new_id("text"),
+                    "title":   title,
+                    "url":     url,
+                    "content": chunk
+                }, ensure_ascii=False) + "\n")
 
-            # 提取正文
-            text_string = extract_text_from_html(soup)
-            text_data = {
-                "title": title,
-                "url": url,
-                "contents": str(text_string),
-                "id": f"expanded_text_{text_id_count}"
-            }
-            text_out.write(json.dumps(text_data, ensure_ascii=False) + '\n')
-            text_id_count += 1
+            # ---------- INFOBOX ----------
+            ib = extract_infobox(soup)
+            if ib:
+                f_info.write(json.dumps({
+                    "id":      new_id("infobox"),
+                    "title":   title,
+                    "url":     url,
+                    "content": json.dumps(ib, ensure_ascii=False)
+                }, ensure_ascii=False) + "\n")
 
-            # 提取 infobox
-            infobox_dict = extract_infobox(soup)
-            if infobox_dict:
-                infobox_data = {
-                    "title": title,
-                    "url": url,
-                    "contents": str({key: str(value) for key, value in infobox_dict.items()}),
-                    "id": f"expanded_infobox_{infobox_id_count}"
-                }
-                infobox_out.write(json.dumps(infobox_data, ensure_ascii=False) + '\n')
-                infobox_id_count += 1
+            # ---------- TABLES ----------
+            for tbl in extract_tables(soup):
+                f_tbl.write(json.dumps({
+                    "id":      new_id("table"),
+                    "title":   title,
+                    "url":     url,
+                    "content": json.dumps(tbl, ensure_ascii=False)
+                }, ensure_ascii=False) + "\n")
 
-            # 提取表格
-            content_div = soup.find('div', class_='mw-parser-output')
-            if content_div:
-                tables = content_div.find_all('table', {'class': 'wikitable'})
-                for idx, table in enumerate(tables):
-                    headers = [
-                        str(header_cell.get_text(separator=" ", strip=True))
-                        for header_cell in table.find_all('th')
-                    ]
-                    rows = []
-                    table_rows = table.find_all('tr')
-                    for row in table_rows[1:]:
-                        row_cells = [
-                            str(cell.get_text(separator=" ", strip=True))
-                            for cell in row.find_all(['td', 'th'])
-                        ]
-                        rows.append(row_cells)
-
-                    table_item = {
-                        "title": title,
-                        "url": url,
-                        "contents": str({
-                            "columns": headers,
-                            "rows": rows
-                        }),
-                        "id": f"expanded_table_{table_id_count}"
-                    }
-                    tables_out.write(json.dumps(table_item, ensure_ascii=False) + '\n')
-                    table_id_count += 1
-
-# 主函数
+# ---------- CLI ----------
 if __name__ == "__main__":
-    html_directory = "wikipedia_expanded_html"
-    text_output_file = "expanded_text_content.jsonl"
-    infobox_output_file = "expanded_infobox_content.jsonl"
-    tables_output_file = "expanded_tables_content.jsonl"
-
+    html_dir = "wikipedia_expanded_html"
     process_html_folder(
-        html_dir=html_directory,
-        text_output_file=text_output_file,
-        infobox_output_file=infobox_output_file,
-        tables_output_file=tables_output_file
+        html_dir,
+        t_out   = "extended_corpus/text/expanded_corpus_text.jsonl",
+        i_out   = "extended_corpus/infobox/expanded_corpus_infobox.jsonl",
+        tbl_out = "extended_corpus/table/expanded_corpus_tables.jsonl"
     )

@@ -21,7 +21,7 @@ def update_gold_evidences(json_file_path):
                     # 创建新的结构，包含 id 和 content
                     updated_evidence = {
                         "id": gold_evidence_ids[idx],
-                        "content": evidence  # 将原有的 evidence 放入 content 中
+                        "content": gold_evidences  # 将原有的 evidence 放入 content 中
                     }
                     updated_evidences.append(updated_evidence)  # 添加到列表
             
@@ -33,5 +33,5 @@ def update_gold_evidences(json_file_path):
         json.dump(data, file, ensure_ascii=False, indent=4)
 
 # 示例调用
-json_file_path = 'processed/templeqa/newer_dev_sports_reformatted.json'  # 替换为你的json文件路径
+json_file_path = 'processed/templeqa/newer_head_sports_reformatted.json'  # 替换为你的json文件路径
 update_gold_evidences(json_file_path)
