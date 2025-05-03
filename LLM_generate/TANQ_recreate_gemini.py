@@ -150,6 +150,7 @@ async def generate_variant(item: dict, item_index: int, variant_index: int, cate
 10. The question must obey the rules of open-domain retreival questions
 
 ### Evidence Rules
+- Include at least 2 tables provided
 - Add any helpful text evidences (limit 8).
 - For every evidence you include, fill in a short "reason" explaining how it supports the answer.
 
