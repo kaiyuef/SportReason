@@ -13,8 +13,9 @@ API_KEY = "AIzaSyBIxoRNoYPPgCj8SGC6b_wjArEzn1QTKLA"
 # --- API & Model Configuration ---
 BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 MODEL_NAME = "gemini-2.5-flash-preview-04-17"
-MAX_CONCURRENT_TASKS = 5
-API_CALL_DELAY_SECONDS = 1.1
+MAX_CONCURRENT_TASKS = 10
+API_CALL_DELAY_SECONDS = 0.5
+VARIANTS_PER_CATEGORY = 2  
 
 # --- File & Processing Configuration ---
 TABLE_DIR = "hybridqa/WikiTables-WithLinks/sports_tables_tok"
@@ -240,7 +241,7 @@ Available Evidence Pool:
             final_output["answer"] = structured_output_from_llm.get("answer", structured_output_from_llm.get("seed_answer", None)) # Default to None if missing
             final_output["gold_evidences"] = processed_evidences # Use the reconstructed list
             final_output["reasoning_type"] = category # From function args
-            final_output["seed_dataset"] = "TANQ" # Hardcoded as per example
+            final_output["seed_dataset"] = "HybridQA" # Hardcoded as per example
             final_output["seed_id"] = seed_id # From function args
             final_output["variant_id"] = variant_id # From function args
 
@@ -275,139 +276,122 @@ Available Evidence Pool:
 # ========== 5. Main Workflow (Pass seed_id, use correct output filename) ==========
 async def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    # Using the output filename from the original script context
-    output_file = os.path.join(OUTPUT_DIR, "new_hybrid_optimized2.jsonl")
+    output_file = os.path.join(OUTPUT_DIR, "new_hybrid_optimized_final.jsonl")
 
+    # 1. 列出所有待处理的表文件
     try:
         all_table_files = [f for f in os.listdir(TABLE_DIR) if f.endswith(".json")]
-        logging.info(f"Found {len(all_table_files)} potential table files in {TABLE_DIR}")
-    except FileNotFoundError:
-        logging.error(f"❌ Table directory not found: {TABLE_DIR}")
-        return
+        logging.info(f"Found {len(all_table_files)} table files in {TABLE_DIR}")
     except Exception as e:
-        logging.error(f"❌ Error listing files in {TABLE_DIR}: {e}")
+        logging.error(f"❌ Error listing {TABLE_DIR}: {e}")
         return
 
-    # Apply NUM_SAMPLES_TO_PROCESS
-    files_to_process = all_table_files
-    if NUM_SAMPLES_TO_PROCESS is not None and NUM_SAMPLES_TO_PROCESS > 0:
+    # 2. 根据 NUM_SAMPLES_TO_PROCESS 决定要处理的文件列表
+    if NUM_SAMPLES_TO_PROCESS:
         files_to_process = all_table_files[:NUM_SAMPLES_TO_PROCESS]
-        logging.info(f"Processing the first {len(files_to_process)} samples based on NUM_SAMPLES_TO_PROCESS={NUM_SAMPLES_TO_PROCESS}.")
-    elif NUM_SAMPLES_TO_PROCESS is not None:
-         logging.warning(f"NUM_SAMPLES_TO_PROCESS is set to {NUM_SAMPLES_TO_PROCESS}. No samples will be processed.")
-         files_to_process = []
+        logging.info(f"Processing first {len(files_to_process)} tables (limit={NUM_SAMPLES_TO_PROCESS})")
     else:
-        logging.info(f"NUM_SAMPLES_TO_PROCESS is None. Processing all {len(files_to_process)} found tables.")
+        files_to_process = all_table_files
+        logging.info(f"Processing all {len(files_to_process)} tables")
 
     if not files_to_process:
-        logging.warning("No table files selected for processing.")
+        logging.warning("No table files to process, exiting.")
         return
 
+    # 3. 为每个 table + 每个 category + 每个变体 生成任务
     semaphore = asyncio.Semaphore(MAX_CONCURRENT_TASKS)
-    processed_tables_count = 0
     all_tasks = []
-
-    # --- Task Creation Phase ---
-    logging.info(f"Creating tasks for {len(files_to_process)} selected tables...")
-    # <<< Use enumerate to get table_index for seed_id >>>
-    for table_index, file_name in enumerate(files_to_process):
+    for seed_id, file_name in enumerate(files_to_process):
+        file_id = file_name[:-5]
         table_path = os.path.join(TABLE_DIR, file_name)
         hyperlink_path = os.path.join(HYPERLINK_DIR, file_name)
-        file_id = file_name[:-5]
 
-        if not os.path.exists(hyperlink_path):
-            logging.warning(f"⚠️ Missing hyperlink file {hyperlink_path} for table {file_name}. Skipping.")
-            continue
-
-        # Load Table Data
+        # 载入 table JSON
         try:
-            with open(table_path, 'r', encoding='utf-8') as f_table: table_json = json.load(f_table)
-            if not isinstance(table_json.get("header"), list) or not isinstance(table_json.get("data"), list):
-                logging.warning(f"⚠️ Invalid table structure in {file_name}. Skipping.")
-                continue
+            with open(table_path, 'r', encoding='utf-8') as f:
+                tbl = json.load(f)
             full_table = [
-                table_json.get("url", ""),
-                {"columns": table_json["header"], "rows": [[cell[0] if isinstance(cell, list) and cell else cell for cell in row] for row in table_json["data"]]}
+                tbl.get("url", ""),
+                {"columns": tbl["header"], "rows": [[c[0] if isinstance(c, list) and c else c for c in row] for row in tbl["data"]]}
             ]
         except Exception as e:
-            logging.error(f"⚠️ Error processing table file {file_name}: {e}. Skipping.")
+            logging.warning(f"Skipping invalid table {file_name}: {e}")
             continue
 
-        # Load Hyperlink Data
+        # 载入 hyperlink JSON
         try:
-            with open(hyperlink_path, 'r', encoding='utf-8') as f_link: hyperlink_dict = json.load(f_link)
-            all_hyperlinks = [{"id": k, "evidence_text": v, "reason": "Context from hyperlink."} for k, v in hyperlink_dict.items() if k and isinstance(v, str)]
-            if not all_hyperlinks:
-                logging.warning(f"⚠️ No valid hyperlinks found in {hyperlink_path} for {file_name}. Skipping.")
-                continue
+            with open(hyperlink_path, 'r', encoding='utf-8') as f:
+                link_dict = json.load(f)
+            hyperlinks = [
+                {"id": k, "evidence_text": v, "reason": "Context from hyperlink."}
+                for k, v in link_dict.items() if isinstance(v, str)
+            ]
         except Exception as e:
-            logging.error(f"⚠️ Error processing hyperlink file {hyperlink_path}: {e}. Skipping.")
+            logging.warning(f"Skipping missing/invalid hyperlinks for {file_name}: {e}")
             continue
 
-        # Create Generation Tasks
-        logging.info(f"📦 Creating generation tasks for table {file_id} (seed_id={table_index})...")
-        prompt_keys = list(prompt_templates.keys())
-        for j in range(5): # Generate 5 variants per table
-            category = prompt_keys[j % len(prompt_keys)]
-            # <<< Pass table_index as seed_id >>>
-            task = generate_variant(full_table, all_hyperlinks, j, file_id, table_index, category, semaphore)
-            all_tasks.append(task)
+        # 创建任务
+        for category in prompt_templates.keys():
+            for variant_id in range(VARIANTS_PER_CATEGORY):
+                all_tasks.append(
+                    generate_variant(
+                        full_table,
+                        hyperlinks,
+                        variant_id,
+                        file_id,
+                        seed_id,
+                        category,
+                        semaphore
+                    )
+                )
 
-        processed_tables_count += 1
-
-    # --- Execution Phase ---
-    if not all_tasks:
-        logging.warning("No tasks were created. Exiting.")
-        return
-
-    logging.info(f"🚀 Running {len(all_tasks)} generation tasks concurrently (max {MAX_CONCURRENT_TASKS})...")
+    logging.info(f"🚀 Running {len(all_tasks)} tasks (concurrency={MAX_CONCURRENT_TASKS})…")
     results = await asyncio.gather(*all_tasks)
-    logging.info("✅ Task execution finished.")
+    logging.info("✅ Generation complete.")
 
-    # --- Filtering and Writing Results Phase ---
-    filtered_results_count = 0
-    logging.info(f"Filtering results and writing to {output_file}...")
-    logging.info(f"Filter Criteria: Exactly 1 Table AND More than 2 Text Evidences (Text > 2)")
+    # 4. 过滤、打标签并写入
+    category_counts = {
+        "multi-table + multi text": 0,
+        "multi-table": 0,
+        "single table+multi text": 0,
+        "multi-text": 0
+    }
+    saved = 0
 
-    try:
-        with open(output_file, "w", encoding="utf-8") as fout:
-            for result in results:
-                # Ensure result is not None and is a dictionary before proceeding
-                if isinstance(result, dict):
-                    # Apply filtering based on the structure of the *processed* evidences
-                    evidences = result.get("gold_evidences", [])
-                    table_count = sum(1 for ev in evidences if ev.get("type") == "table")
-                    text_count = sum(1 for ev in evidences if ev.get("type") == "text")
+    with open(output_file, "w", encoding="utf-8") as fout:
+        for r in results:
+            if not isinstance(r, dict):
+                continue
 
-                    # Filter condition: Exactly 1 table AND more than 2 text evidences
-                    if table_count == 1 and text_count > 2:
-                        json.dump(result, fout, ensure_ascii=False, indent=4) # Use indent=4 like example
-                        fout.write("\n")
-                        filtered_results_count += 1
-                    else:
-                        # Use seed_id and variant_id for logging skipped items
-                        s_id = result.get('seed_id', 'N/A')
-                        v_id = result.get('variant_id', 'N/A')
-                        logging.info(f"Filter SKIPPED for SeedID {s_id}-V{v_id} - Criteria not met (Tables: {table_count}, Texts: {text_count}, Required: T=1, Txt>2)")
-                elif result is None:
-                    logging.warning("Skipping None result (generation failed earlier)")
-                else:
-                    logging.error(f"Skipping unexpected result type: {type(result)}")
+            evidences = r.get("gold_evidences", [])
+            table_count = sum(1 for ev in evidences if ev.get("type") == "table")
+            text_count  = sum(1 for ev in evidences if ev.get("type") == "text")
 
+            # 分类并丢弃 other
+            if table_count >= 2 and text_count >= 2:
+                q_cat = "multi-table + multi text"
+            elif table_count >= 2:
+                q_cat = "multi-table"
+            elif table_count == 1 and text_count >= 2:
+                q_cat = "single table+multi text"
+            elif text_count >= 2:
+                q_cat = "multi-text"
+            else:
+                continue
 
-    except IOError as e:
-        logging.error(f"❌ Error writing to output file {output_file}: {e}")
-        return
-    except Exception as e:
-        logging.error(f"❌ Unexpected error during file writing: {e}")
-        return
+            r["question_category"] = q_cat
+            category_counts[q_cat] += 1
 
-    total_generated = len([r for r in results if r is not None])
-    logging.info(f"\n🎉 All done!")
-    logging.info(f"   Processed data from {processed_tables_count} tables.")
-    logging.info(f"   Successfully generated {total_generated} items before filtering.")
-    logging.info(f"   Saved {filtered_results_count} filtered Q&A pairs to: {output_file}")
-    logging.info(f"   (Filter Applied: Table Count == 1 AND Text Count > 2)")
+            json.dump(r, fout, ensure_ascii=False, indent=4)
+            fout.write("\n")
+            saved += 1
+
+    # 5. 输出统计
+    logging.info(f"🎉 Done! Saved {saved} items to {output_file}")
+    logging.info("Counts per question_category:")
+    for cat, cnt in category_counts.items():
+        logging.info(f"  {cat}: {cnt}")
+
 
 
 # ========== 6. Startup ==========

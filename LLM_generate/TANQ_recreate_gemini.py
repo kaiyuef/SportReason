@@ -16,10 +16,11 @@ API_KEY = "AIzaSyBIxoRNoYPPgCj8SGC6b_wjArEzn1QTKLA"
 BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/" # Keep user's specified base URL
 MODEL_NAME = "gemini-2.5-flash-preview-04-17" # Newer model identifier, adjust if needed
 INPUT_FILE = "dataset/merged_dataset_updated.jsonl"
-OUTPUT_FILE = "dataset_inprocess/new_TANQ_gemini_optimized4.jsonl"
-NUM_SAMPLES_TO_PROCESS = 200 # Set to None to process all samples
-MAX_CONCURRENT_TASKS = 5 # Limit concurrent API calls
-API_CALL_DELAY_SECONDS = 1.1 # Delay between API calls to respect rate limits
+OUTPUT_FILE = "dataset_inprocess/new_TANQ_gemini_optimized2.jsonl"
+NUM_SAMPLES_TO_PROCESS = 50 # Set to None to process all samples
+MAX_CONCURRENT_TASKS = 10 # Limit concurrent API calls
+API_CALL_DELAY_SECONDS = 0.5 # Delay between API calls to respect rate limits
+VARIANTS_PER_CATEGORY = 2
 
 # Categories map directly to prompt keys
 CATEGORIES = ["sorting", "max_min", "counting", "implicit_temporal"]
@@ -273,10 +274,16 @@ Available Evidences: {json.dumps(gold_evidences, ensure_ascii=False, indent=2)}
 
 
 # ========== 5. Main Function ==========
+# ========== 新增：每个 category 生成的变体数量 ==========
+
+
 async def main():
     """
-    Main function to read data, generate variants concurrently, filter, and write results.
+    Main function to read data, generate VARIANTS_PER_CATEGORY variants per category concurrently,
+    label question categories, write filtered results to the output file,
+    and log the final counts per category.
     """
+    # 1. 读取输入文件
     try:
         with open(INPUT_FILE, "r", encoding="utf-8") as f:
             raw_data = [json.loads(line) for line in f]
@@ -285,12 +292,13 @@ async def main():
         logging.error(f"❌ Input file not found: {INPUT_FILE}")
         return
     except json.JSONDecodeError as e:
-         logging.error(f"❌ Error decoding JSON from {INPUT_FILE}: {e}")
-         return
+        logging.error(f"❌ Error decoding JSON from {INPUT_FILE}: {e}")
+        return
     except Exception as e:
         logging.error(f"❌ Error reading input file {INPUT_FILE}: {e}")
         return
 
+    # 2. 准备并发任务
     semaphore = asyncio.Semaphore(MAX_CONCURRENT_TASKS)
     tasks = []
 
@@ -300,55 +308,82 @@ async def main():
         logging.info(f"Processing the first {len(data_to_process)} samples.")
 
     for i, item in enumerate(data_to_process):
-        logging.info(f"\n📦 Creating tasks for sample {i}...")
-        for j, category in enumerate(CATEGORIES):
-            # Create a task for each variant generation
-            tasks.append(generate_variant(item, i, j, category, semaphore))
+        logging.info(f"📦 Creating tasks for sample {i}...")
+        for category in CATEGORIES:
+            for k in range(VARIANTS_PER_CATEGORY):
+                tasks.append(
+                    generate_variant(
+                        item,
+                        item_index=i,
+                        variant_index=k,
+                        category=category,
+                        semaphore=semaphore
+                    )
+                )
 
     logging.info(f"Created {len(tasks)} generation tasks. Running concurrently (max {MAX_CONCURRENT_TASKS})...")
 
-    # Run tasks concurrently and gather results
+    # 3. 并发执行所有任务
     results = await asyncio.gather(*tasks)
 
-    # Filter results and write to output file
+    # 4. 根据 table/text 数量打标签并写入文件（丢弃 other），并统计每个 category 的数量
+    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
     filtered_count = 0
-    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True) # Ensure output directory exists
+    # 初始化计数器
+    category_counts = {
+        "multi-table + multi text": 0,
+        "multi-table": 0,
+        "single table+multi text": 0,
+        "multi-text": 0
+    }
+
     try:
         with open(OUTPUT_FILE, "w", encoding="utf-8") as out_f:
             for result in results:
-                if not result: # Skip None results (errors)
+                if not result:
                     continue
 
-                # Filtering logic based on evidence types
+                # 统计证据类型
                 evidence_types = [ev.get("type", "unknown") for ev in result.get("gold_evidences", [])]
-                table_count = evidence_types.count("table") + evidence_types.count("infobox") # Count both table and infobox as "table" type for filtering
-                text_count = evidence_types.count("text")
+                table_count = evidence_types.count("table") + evidence_types.count("infobox")
+                text_count  = evidence_types.count("text")
 
-                # Apply the filter: >= 2 tables/infoboxes AND >= 2 text evidences
-                # Updated requirement check based on user script comments
-                if table_count >= 2 and text_count >= 0: # Original script had >= 2 text rule, changed based on prompt which only mentions >=2 tables
-                    # **Correction:** The prompt *does* imply text use "You also need to use textual evidences"
-                    # **Re-Correction based on user's filter:** The user *implemented* a filter for >=2 text. Let's stick to the user's implemented filter.
-                    if text_count >= 2: # Reinstating the user's implemented text filter rule
-                        logging.debug(f"Filter PASSED for Q{result['seed_id']}-V{result['variant_id']} (Tables: {table_count}, Texts: {text_count})")
-                        json.dump(result, out_f, ensure_ascii=False, indent=4)
-                        out_f.write("\n")
-                        filtered_count += 1
-                    else:
-                        logging.info(f"Filter SKIPPED for Q{result['seed_id']}-V{result['variant_id']} - Insufficient text evidence (Tables: {table_count}, Texts: {text_count})")
-
+                # 确定 question_category
+                if table_count >= 2 and text_count >= 2:
+                    q_cat = "multi-table + multi text"
+                elif table_count >= 2:
+                    q_cat = "multi-table"
+                elif table_count == 1 and text_count >= 2:
+                    q_cat = "single table+multi text"
+                elif text_count >= 2:
+                    q_cat = "multi-text"
                 else:
-                     logging.info(f"Filter SKIPPED for Q{result['seed_id']}-V{result['variant_id']} - Insufficient table evidence (Tables: {table_count}, Texts: {text_count})")
+                    # 丢弃 other
+                    continue
+
+                # 增加分类标签
+                result["question_category"] = q_cat
+                # 更新计数器
+                category_counts[q_cat] += 1
+
+                # 写入输出文件
+                json.dump(result, out_f, ensure_ascii=False, indent=4)
+                out_f.write("\n")
+                filtered_count += 1
 
     except IOError as e:
         logging.error(f"❌ Error writing to output file {OUTPUT_FILE}: {e}")
         return
     except Exception as e:
-         logging.error(f"❌ Unexpected error during file writing: {e}")
-         return
+        logging.error(f"❌ Unexpected error during file writing: {e}")
+        return
 
+    # 5. 输出统计信息
+    logging.info(f"🎉 Done! {filtered_count} results saved to: {OUTPUT_FILE}")
+    logging.info("Counts per question_category:")
+    for cat, cnt in category_counts.items():
+        logging.info(f"  {cat}: {cnt}")
 
-    logging.info(f"\n🎉 All done! {filtered_count} filtered results saved to: {OUTPUT_FILE}")
 
 
 # ========== 6. Startup ==========
