@@ -157,7 +157,7 @@ def standardise_sample(raw: dict) -> dict:
         "seed_question": raw.get("seed_question","") or raw.get("question",""),
         "seed_dataset": raw.get("seed_dataset","") or Path(raw.get("_src_path","")).stem,
         "seed_answers": raw.get("seed_answers") or ([raw["seed_answer"]] if "seed_answer" in raw else []),
-        "answers":     raw.get("answers") or ([raw["seed_answer"]] if "seed_answer" in raw else []),
+        "answers":     raw.get("answers") or ([raw.get("answer")]),
         "reasoning_type": raw.get("reasoning_type","")
     }
 
