@@ -290,34 +290,6 @@ def extract_pdf_text(url):
     except Exception as e:
         return f"Error: {str(e)}"
 
-# def extract_relevant_info(search_results):
-#     """
-#     Extract relevant information from Bing search results.
-
-#     Args:
-#         search_results (dict): JSON response from the Bing Web Search API.
-
-#     Returns:
-#         list: A list of dictionaries containing the extracted information.
-#     """
-#     useful_info = []
-    
-#     if 'webPages' in search_results and 'value' in search_results['webPages']:
-#         for id, result in enumerate(search_results['webPages']['value']):
-#             info = {
-#                 'id': id + 1,  # Increment id for easier subsequent operations
-#                 'title': result.get('name', ''),
-#                 'url': result.get('url', ''),
-#                 'site_name': result.get('siteName', ''),
-#                 'date': result.get('datePublished', '').split('T')[0],
-#                 'snippet': result.get('snippet', ''),  # Remove HTML tags
-#                 # Add context content to the information
-#                 'context': ''  # Reserved field to be filled later
-#             }
-#             useful_info.append(info)
-    
-#     return useful_info
-
 def extract_relevant_info(search_results):
     """
     Extract relevant information from Bing search results.
@@ -330,12 +302,12 @@ def extract_relevant_info(search_results):
     """
     useful_info = []
     
-    if 'organic_results' in search_results:
-        for id, result in enumerate(search_results['organic_results']):
+    if 'webPages' in search_results and 'value' in search_results['webPages']:
+        for id, result in enumerate(search_results['webPages']['value']):
             info = {
                 'id': id + 1,  # Increment id for easier subsequent operations
-                'title': result.get('title', ''),
-                'url': result.get('link', ''),
+                'title': result.get('name', ''),
+                'url': result.get('url', ''),
                 'site_name': result.get('siteName', ''),
                 'date': result.get('datePublished', '').split('T')[0],
                 'snippet': result.get('snippet', ''),  # Remove HTML tags
@@ -343,7 +315,22 @@ def extract_relevant_info(search_results):
                 'context': ''  # Reserved field to be filled later
             }
             useful_info.append(info)
+    elif 'organic_results' in search_results:
+        for id, result in enumerate(search_results['organic_results']):
+            info = {
+                'id': id + 1,  # Increment id for easier subsequent operations
+                'title': result.get('title', ''),
+                'url': result.get('link', ''),
+                'site_name': result.get('site_name', ''),
+                'date': result.get('date', ''),
+                'snippet': result.get('snippet', ''),  # Remove HTML tags
+                # Add context content to the information
+                'context': ''  # Reserved field to be filled later
+            }
+            useful_info.append(info)
+    
     return useful_info
+
 
 # ------------------------------------------------------------
 
