@@ -1,0 +1,3002 @@
+[
+    {
+        "id": "sample_1",
+        "Question": "How many years after turning professional did Davis Love III achieve his highest ranking?",
+        "answer": "13"
+    },
+    {
+        "id": "sample_2",
+        "Question": "How many times did Davis Love III won PGA Championship since 1985?",
+        "answer": "One (1997)"
+    },
+    {
+        "id": "sample_3",
+        "Question": "How many years after Davis Love III was acheived his highest ranking in 1998 from his debut?",
+        "answer": "13 Years after"
+    },
+    {
+        "id": "sample_4",
+        "Question": "How old was Davis Love III when he won PGA Championship tournament?",
+        "answer": "33"
+    },
+    {
+        "id": "sample_5",
+        "Question": "How old was Davis Love III when he turned professional?",
+        "answer": "21"
+    },
+    {
+        "id": "sample_6",
+        "Question": "What was the age when Davis Love III awared World Golf Hall of Fame 2017?",
+        "answer": "Age of 53"
+    },
+    {
+        "id": "sample_7",
+        "Question": "How old was Vijay Singh when he turned professional?",
+        "answer": "19"
+    },
+    {
+        "id": "sample_8",
+        "Question": "What year did Vijay Singh begin playing professionally?",
+        "answer": "1982"
+    },
+    {
+        "id": "sample_9",
+        "Question": "How old was Vijay Singh when he began playing professionally?",
+        "answer": "19 years old"
+    },
+    {
+        "id": "sample_10",
+        "Question": "How old was Singh when he won the Master's Tournament?",
+        "answer": "37"
+    },
+    {
+        "id": "sample_11",
+        "Question": "What year did Vijay Singh attain his highest ranking of his career?",
+        "answer": "2004"
+    },
+    {
+        "id": "sample_12",
+        "Question": "How old was Singh when he won the Master's Tournament?",
+        "answer": "37"
+    },
+    {
+        "id": "sample_13",
+        "Question": "How long after turning professional did Vijay Singh win the Rookie of the Year award?",
+        "answer": "11 years"
+    },
+    {
+        "id": "sample_14",
+        "Question": "How old was Vijay Singh when he turned professional?",
+        "answer": "19 years old"
+    },
+    {
+        "id": "sample_15",
+        "Question": "How many combined years did Peyton Manning play for an NFL team?",
+        "answer": "16 years"
+    },
+    {
+        "id": "sample_16",
+        "Question": "How many years did Peyton Manning attend University of Tennessee?",
+        "answer": "3 years"
+    },
+    {
+        "id": "sample_17",
+        "Question": "How many years after leaving college did Peyton Manning start playing professional football in the NFL?",
+        "answer": "1"
+    },
+    {
+        "id": "sample_18",
+        "Question": "How much longer did Manning play for the Colts than the Broncos?",
+        "answer": "10 years"
+    },
+    {
+        "id": "sample_19",
+        "Question": "How many years did Peyton Manning attend college for?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_20",
+        "Question": "How many years after entering the NFL draft did Manning first win Most Valuable Player?",
+        "answer": "5 years"
+    },
+    {
+        "id": "sample_21",
+        "Question": "When was the last time that Rick Barry was on the All-NBA First Team?",
+        "answer": "1976"
+    },
+    {
+        "id": "sample_22",
+        "Question": "How many years did Rick Barry was in active career?",
+        "answer": "15 Years"
+    },
+    {
+        "id": "sample_23",
+        "Question": "When was the second year that Rick Barry was on the All-NBA First Team?",
+        "answer": "1967"
+    },
+    {
+        "id": "sample_24",
+        "Question": "How many years ago did Rick Barry was received the award of NBA scoring champion?",
+        "answer": "55 Years ago (1967)"
+    },
+    {
+        "id": "sample_25",
+        "Question": "What was the last year that Rick Barry was an NBA All Star?",
+        "answer": "1978"
+    },
+    {
+        "id": "sample_26",
+        "Question": "How many years did Rick Barry play in his career?",
+        "answer": "15 years"
+    },
+    {
+        "id": "sample_27",
+        "Question": "How long after Rick Barry began playing in his career did Rick Barry win NBA Scoring Champion?",
+        "answer": "2 years"
+    },
+    {
+        "id": "sample_28",
+        "Question": "How many years did Matthew Anderson played for Sir Safety Perugia?",
+        "answer": "1 Year"
+    },
+    {
+        "id": "sample_29",
+        "Question": "How old was Matthew Anderson when he won the bronze in the 2016 Rio de Janeiro Olympics?",
+        "answer": "29 years"
+    },
+    {
+        "id": "sample_30",
+        "Question": "When did Matthew Anderson most recently win a medal in the World Cup event?",
+        "answer": "2019"
+    },
+    {
+        "id": "sample_31",
+        "Question": "What year did Ian Thorpe win his only Olympic Bronze Medal?",
+        "answer": "2004"
+    },
+    {
+        "id": "sample_32",
+        "Question": "How many gold medals won by Ian Thorpe in Commonwealth Games since 1998?",
+        "answer": "10"
+    },
+    {
+        "id": "sample_33",
+        "Question": "How many years ago did Ian Thorpe was last played in Olympic?",
+        "answer": "18 Years ago"
+    },
+    {
+        "id": "sample_34",
+        "Question": "When was the most recent Pan Pacific Championships tournament in Sydney that Ian Thorpe was present for?",
+        "answer": "1999"
+    },
+    {
+        "id": "sample_35",
+        "Question": "When was Ian Thorpe's last appearance in the Olympic freestyle event?",
+        "answer": "2004"
+    },
+    {
+        "id": "sample_36",
+        "Question": "How old was Ian Thorpe when he won his first Olympic Gold medal?",
+        "answer": "18 years old"
+    },
+    {
+        "id": "sample_37",
+        "Question": "How many gold medals did Ian Thorpe win at the 1999 Pan Pacific games?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_38",
+        "Question": "How many years were between the year Takashi won an Olympic gold medal and a gold at the Asia Team Championships?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_39",
+        "Question": "How many gold medals did Ayaka Takahashi win in international competitions 2 years before she retired?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_40",
+        "Question": "How many years were between Ayaka Takahashi gaining her highest ranking and winning a gold medal in the 2016 Olympics?",
+        "answer": "2 years"
+    },
+    {
+        "id": "sample_41",
+        "Question": "What was the rank does Ayaka Takahashi was achieved in 2020 compared to 2014?",
+        "answer": "6 Rank decreased (1 to 7)"
+    },
+    {
+        "id": "sample_42",
+        "Question": "What year did Ayaka Takahashi win her first medal in the Asian Games?",
+        "answer": "2014"
+    },
+    {
+        "id": "sample_43",
+        "Question": "How many medals won by Petya Nedelcheva in European Championships from 2010?",
+        "answer": "Two (2010, 2014)"
+    },
+    {
+        "id": "sample_44",
+        "Question": "What is the years' difference from Nedelcheva's first and last medal?",
+        "answer": "15 years"
+    },
+    {
+        "id": "sample_45",
+        "Question": "How many medals has Petya Nedelcheva won after 2010?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_46",
+        "Question": "What was the differential in places between Nedelcheva's highest in doubles and singles competition?",
+        "answer": "5"
+    },
+    {
+        "id": "sample_47",
+        "Question": "When was the most recent year in which Petya Nedelcheva won a medal?",
+        "answer": "2016"
+    },
+    {
+        "id": "sample_48",
+        "Question": "Where is the only event Nedelchevawon a single medal in?",
+        "answer": "2010 Manchester"
+    },
+    {
+        "id": "sample_49",
+        "Question": "When was the first year that Petya Nedelcheva won a medal?",
+        "answer": "2001"
+    },
+    {
+        "id": "sample_50",
+        "Question": "How many gold medals did Sayaka Hirota win the year she was ranked 1st?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_51",
+        "Question": "In what year did Sayaka Hirota win the most medals?",
+        "answer": "2018"
+    },
+    {
+        "id": "sample_52",
+        "Question": "How many years are between when Sayaka Hirota on a silver at the World Championships World Championships and a silver at the Sudirman Cup?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_53",
+        "Question": "How many total medals has Hirota won?",
+        "answer": "13"
+    },
+    {
+        "id": "sample_54",
+        "Question": "How many times did Sayaka Hirota receive a medal before 2020?",
+        "answer": "10"
+    },
+    {
+        "id": "sample_55",
+        "Question": "When was the first time that Sayaka Hirota received a medal in the World Championships?",
+        "answer": "2017"
+    },
+    {
+        "id": "sample_56",
+        "Question": "Which medal has Hirota won most?",
+        "answer": "Gold, 5"
+    },
+    {
+        "id": "sample_57",
+        "Question": "How many years ago did Danica Patrick first race in NASCAR Cup Series?",
+        "answer": "10 Years ago"
+    },
+    {
+        "id": "sample_58",
+        "Question": "Patrick has how many total top tens in all Nascar events?",
+        "answer": "14"
+    },
+    {
+        "id": "sample_59",
+        "Question": "How many years were between Patrick's first race in her NASCAR Xfinity Series career and her last race in her IndyCar Series career?",
+        "answer": "8"
+    },
+    {
+        "id": "sample_60",
+        "Question": "How much long was Patrick's IndyCar Series career than her NASCAR Cup Series career?",
+        "answer": "1 year"
+    },
+    {
+        "id": "sample_61",
+        "Question": "What was the age when Danica Patrick won IndyCar Series season Rookie of the Year in 2005?",
+        "answer": "Age of 23"
+    },
+    {
+        "id": "sample_62",
+        "Question": "What year did Felix Rosenqvist debut in the Formula E series?",
+        "answer": "2016"
+    },
+    {
+        "id": "sample_63",
+        "Question": "How old was Felix Rosenqvist when he debuted in the Formula E series?",
+        "answer": "25 years old"
+    },
+    {
+        "id": "sample_64",
+        "Question": "What was Felix Rosenqvist's best finish in the Formula E series in 2019?",
+        "answer": "6th"
+    },
+    {
+        "id": "sample_65",
+        "Question": "How many years ago did Felix Rosenqvist was won Formula Asia 2.0?",
+        "answer": "14 Years ago"
+    },
+    {
+        "id": "sample_66",
+        "Question": "What was the age when Felix Rosenqvist played his first race in IndyCar Series 2019?",
+        "answer": "Age of 28"
+    },
+    {
+        "id": "sample_67",
+        "Question": "How many Championship titles did race car driver Felix Rosenqvist win between 2008 and 2015?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_68",
+        "Question": "Which two series did Felix Rosenqvist race in the year before racing in the German Formula Three series?",
+        "answer": "Formula Renault 2.0 NEZ and Formula Renault 2.0 Sweden"
+    },
+    {
+        "id": "sample_69",
+        "Question": "Does Helio still drive for Penske?",
+        "answer": "Castroneves spent 20 seasons, 18 with Roger Penske, in IndyCar, but left the series in Oct."
+    },
+    {
+        "id": "sample_70",
+        "Question": "Is Helio Castroneves still racing?",
+        "answer": "Helio Castroneves is still working on a potential deal to race in the 2023 Daytona 500."
+    },
+    {
+        "id": "sample_71",
+        "Question": "How many years was Hélio Castroneves active in his IndyCar racing career?",
+        "answer": "22 years"
+    },
+    {
+        "id": "sample_72",
+        "Question": "How old was Hélio Castroneves when he debuted in his IndyCar career?",
+        "answer": "26 years old"
+    },
+    {
+        "id": "sample_73",
+        "Question": "How many years separated Hélio Castroneves's first and last wins at the Indianapolis 500?",
+        "answer": "20 years"
+    },
+    {
+        "id": "sample_74",
+        "Question": "How many times did Hélio Castroneves won Indianapolis 500 Winner from 2001?",
+        "answer": "4 Times"
+    },
+    {
+        "id": "sample_75",
+        "Question": "What was the age when Hélio Castroneves won 24 Hours of Daytona Overall Winner in 2021?",
+        "answer": "Age of 46"
+    },
+    {
+        "id": "sample_76",
+        "Question": "How many years after Hélio Castroneves won first win Champ Car from his Champ Car career started in 1998?",
+        "answer": "After 2 Years (2000)"
+    },
+    {
+        "id": "sample_77",
+        "Question": "How many gold medals did Nedohin win in international competitions the year of his last Brier appearance?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_78",
+        "Question": "When was David Nedohin's most recent medal received?",
+        "answer": "2013"
+    },
+    {
+        "id": "sample_79",
+        "Question": "When did David Nedohin first attend the Brier championships?",
+        "answer": "2001"
+    },
+    {
+        "id": "sample_80",
+        "Question": "In what year did Nedohin have the most Grand Slam victories?",
+        "answer": "2006"
+    },
+    {
+        "id": "sample_81",
+        "Question": "How many years are between Nedohin's first World Championship gold medal and his last Brier gold medal?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_82",
+        "Question": "What was the age when Kevin Koe participated 2018 Olympic Games?",
+        "answer": "Age of 43"
+    },
+    {
+        "id": "sample_83",
+        "Question": "When was the first time that Kevin Koe won a gold medal in the Tim Hortons Brier?",
+        "answer": "2010"
+    },
+    {
+        "id": "sample_84",
+        "Question": "When was the most recent year that Kevin Koe received a medal in the Canadian Olympic Curling Trials?",
+        "answer": "2021"
+    },
+    {
+        "id": "sample_85",
+        "Question": "When did Kevin Koe make his first Brier appearance?",
+        "answer": "2010"
+    },
+    {
+        "id": "sample_86",
+        "Question": "How many years are between Marc Kennedy's first Brier appearance and his last Olympic appearance?",
+        "answer": "15"
+    },
+    {
+        "id": "sample_87",
+        "Question": "Which Olympic Games did Marc Kennedy win a gold medal?",
+        "answer": "2010 Vancouver"
+    },
+    {
+        "id": "sample_88",
+        "Question": "How many years separated the number of years that Marc Kennedy won a medal in the Olympics?",
+        "answer": "12 years"
+    },
+    {
+        "id": "sample_89",
+        "Question": "How many times did Marc Kennedy was played in olympics from 1999?",
+        "answer": "3 Times (2010, 2018, 2022)"
+    },
+    {
+        "id": "sample_90",
+        "Question": "How many years did Marc Kennedy was played for Northern Ontario?",
+        "answer": "3 Years"
+    },
+    {
+        "id": "sample_91",
+        "Question": "What was Marc Kennedy's CTRS ranking the year he won gold at the Olympics?",
+        "answer": "11"
+    },
+    {
+        "id": "sample_92",
+        "Question": "How many years did Big Van Vader play for the Los Angeles Rams?",
+        "answer": "1 year"
+    },
+    {
+        "id": "sample_93",
+        "Question": "How old was Big Van Vader he year he was drafted?",
+        "answer": "23"
+    },
+    {
+        "id": "sample_94",
+        "Question": "At what age did  Big Van Vader start playing for the Los Angeles Rams?",
+        "answer": "23 years"
+    },
+    {
+        "id": "sample_95",
+        "Question": "How long was Big Van Vader wrestling career?",
+        "answer": "32 years"
+    },
+    {
+        "id": "sample_96",
+        "Question": "How many years were between when Amoroso was awarded FRS and FRCP?",
+        "answer": "9"
+    },
+    {
+        "id": "sample_97",
+        "Question": "How old was Emmanuel Amoroso when he received his first award?",
+        "answer": "25"
+    },
+    {
+        "id": "sample_98",
+        "Question": "How many years after receiving his last award did Emmanuel Amoroso die?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_99",
+        "Question": "When was the last time that Emmanuel Amoroso received an award?",
+        "answer": "1977"
+    },
+    {
+        "id": "sample_100",
+        "Question": "How many years before Emmanuel Amoroso passed did he win his second to last award?",
+        "answer": "6 years"
+    },
+    {
+        "id": "sample_101",
+        "Question": "How old was Sherrington when he won the Copley Medal?",
+        "answer": "70"
+    },
+    {
+        "id": "sample_102",
+        "Question": "How old was Bennie Daniels when he began his MLB career?",
+        "answer": "25 years old"
+    },
+    {
+        "id": "sample_103",
+        "Question": "What was the age of Bennie Daniels When he played MLB debut?",
+        "answer": "Age of 25"
+    },
+    {
+        "id": "sample_104",
+        "Question": "How many years did Bennie Daniels played for Washington Senators from 1961?",
+        "answer": "4 Years"
+    },
+    {
+        "id": "sample_105",
+        "Question": "How old was Daniels when he made his MLB debut?",
+        "answer": "25"
+    },
+    {
+        "id": "sample_106",
+        "Question": "How much longer did Bennie Daniels play for the Washington Senators  than the Pittsburgh Pirates?",
+        "answer": "1 year"
+    },
+    {
+        "id": "sample_107",
+        "Question": "How many years did play for the Pittsburgh Pirates?",
+        "answer": "3 years"
+    },
+    {
+        "id": "sample_108",
+        "Question": "How many years did Bennie Daniels play for MLB?",
+        "answer": "18 years"
+    },
+    {
+        "id": "sample_109",
+        "Question": "How long after  his final year with the Pittsburgh Pirates did Daniels make his last MLB appearance?",
+        "answer": "15 years"
+    },
+    {
+        "id": "sample_110",
+        "Question": "What number did Robert Lewandowski wear?",
+        "answer": "9"
+    },
+    {
+        "id": "sample_111",
+        "Question": "How many years between the year  Lewandowski began to play for Legia Warsaw II and stopped playing for Borussia Dortmund?",
+        "answer": "9"
+    },
+    {
+        "id": "sample_112",
+        "Question": "How old was Robert Lewandowski when he joined the Delta Warsaw in 2005",
+        "answer": "17 years old"
+    },
+    {
+        "id": "sample_113",
+        "Question": "How old was Lewandowski when his youth career ended?",
+        "answer": "16"
+    },
+    {
+        "id": "sample_114",
+        "Question": "How old was Chebbah the first year she played for Besançon?",
+        "answer": "23"
+    },
+    {
+        "id": "sample_115",
+        "Question": "How much longer did Chebbah play for Viborg HKl than for Chambray Touraine Handball?",
+        "answer": "1 year"
+    },
+    {
+        "id": "sample_116",
+        "Question": "How many years are between the first year Chebbah played for Team Esbjerg and the last year she played for Handball Cercle Nîmes?",
+        "answer": "8"
+    },
+    {
+        "id": "sample_117",
+        "Question": "How many total years did Mouna Chebbah play for Senior clubs?",
+        "answer": "14 years"
+    },
+    {
+        "id": "sample_118",
+        "Question": "How old was Mouna Chebbah when she began playing for Besançon in 2005?",
+        "answer": "23 years old"
+    },
+    {
+        "id": "sample_119",
+        "Question": "How many goals did Mouna Chebbah posted for the national team since 2005?",
+        "answer": "1006"
+    },
+    {
+        "id": "sample_120",
+        "Question": "How many years did Mouna Chebbah was played for the team Handball Cercle Nîmes?",
+        "answer": "2 Years (2014-2016)"
+    },
+    {
+        "id": "sample_121",
+        "Question": "How many years did Mouna Chebbah play for Viborg HK?",
+        "answer": "4 years"
+    },
+    {
+        "id": "sample_122",
+        "Question": "How many total years did Žikica Milosavljević play for a national team?",
+        "answer": "10 years"
+    },
+    {
+        "id": "sample_123",
+        "Question": "When was the first time that Žikica Milosavljević won a medal?",
+        "answer": "1996"
+    },
+    {
+        "id": "sample_124",
+        "Question": "How many years did Žikica Milosavljević played for Crvena zvezda from 1994?",
+        "answer": "5 Years"
+    },
+    {
+        "id": "sample_125",
+        "Question": "What was the last year that Žikica Milosavljević played in a senior club?",
+        "answer": "2014"
+    },
+    {
+        "id": "sample_126",
+        "Question": "For how many years did Žikica Milosavljević play with his first senior club?",
+        "answer": "5"
+    },
+    {
+        "id": "sample_127",
+        "Question": "How old was Žikica Milosavljević when he began playing for the Crvena zvezda in 1994?",
+        "answer": "22 years old"
+    },
+    {
+        "id": "sample_128",
+        "Question": "What year did Rafael Nadal win his first US Open?",
+        "answer": "2010"
+    },
+    {
+        "id": "sample_129",
+        "Question": "How many opens named after countries has Rafael Nadal won in Grand Slam singles?",
+        "answer": "20"
+    },
+    {
+        "id": "sample_130",
+        "Question": "What Olympic Games did Rafael Nadal compete in when he was 28 years old?",
+        "answer": "2016 Rio de Janeiro"
+    },
+    {
+        "id": "sample_131",
+        "Question": "How old was Rafael Nadal when he competed in the 2008 Beijing Olympics?",
+        "answer": "20 years old"
+    },
+    {
+        "id": "sample_132",
+        "Question": "How  many years after going pro did Rafael Nadal reach his highest ranking?",
+        "answer": "7"
+    },
+    {
+        "id": "sample_133",
+        "Question": "How old was Rafael Nadal when he first won an Olympic gold medal?",
+        "answer": "22"
+    },
+    {
+        "id": "sample_134",
+        "Question": "What was Rafael Nadal's singles ranking the first time he won an Olympic gold?",
+        "answer": "No.1"
+    },
+    {
+        "id": "sample_135",
+        "Question": "How many years before Ben Hogan died was he inducted into the World Golf Hall of Fame?",
+        "answer": "23"
+    },
+    {
+        "id": "sample_136",
+        "Question": "In what year did Ben Hogan win three major championships and PGA Player of the Year?",
+        "answer": "1953"
+    },
+    {
+        "id": "sample_137",
+        "Question": "How old was Ben Hogan when he won Male Athlete of the year in 1953?",
+        "answer": "41 years old"
+    },
+    {
+        "id": "sample_138",
+        "Question": "How many Masters Tournament Ben Hogan has won?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_139",
+        "Question": "Total number of U.S. Open won by Ben Hogan?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_140",
+        "Question": "How old was Ben Hogan when he turned professional?",
+        "answer": "18 years old"
+    },
+    {
+        "id": "sample_141",
+        "Question": "What two years did Ben Hogan win the Masters Tournament?",
+        "answer": "1951 and 1953"
+    },
+    {
+        "id": "sample_142",
+        "Question": "How many years ago did Derrick Harvey won BCS national champion?",
+        "answer": "15 Years ago (2007)"
+    },
+    {
+        "id": "sample_143",
+        "Question": "How many turnovers does Harvey have during his NFL career?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_144",
+        "Question": "How long after he began to play for the Phillips 66ers did Hougland win a gold medal at the Melbourne Olympic Games?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_145",
+        "Question": "How long did Bill Hougland play for the Philips 66ers?",
+        "answer": "6 years"
+    },
+    {
+        "id": "sample_146",
+        "Question": "What was the age of Bill Hougland when he won Gold medal in Olympic Games 1952?",
+        "answer": "Age of 22"
+    },
+    {
+        "id": "sample_147",
+        "Question": "How many years did Bill Hougland was played for Phillips 66ers?",
+        "answer": "6 Years (1952–1958)"
+    },
+    {
+        "id": "sample_148",
+        "Question": "What was the age when Bill Hougland was joined the Kansas college in 1949?",
+        "answer": "Age of 19"
+    },
+    {
+        "id": "sample_149",
+        "Question": "What year did Bill Hougland win a gold medal for the first time in the Olympics?",
+        "answer": "1952"
+    },
+    {
+        "id": "sample_150",
+        "Question": "How old was Hougland when he entered the NBA draft?",
+        "answer": "22"
+    },
+    {
+        "id": "sample_151",
+        "Question": "Hpw p;d was Brooke Wyckoff when she began attending Florida State?",
+        "answer": "17 years old"
+    },
+    {
+        "id": "sample_152",
+        "Question": "What year did Brooke Wyckoff win gold at the Jones Cup?",
+        "answer": "2000"
+    },
+    {
+        "id": "sample_153",
+        "Question": "How old was Brooke Wyckoff when she won gold at the Jones Cup in 2000?",
+        "answer": "20 years old"
+    },
+    {
+        "id": "sample_154",
+        "Question": "How many years longer did Brooke Wyckoff play for the Chicago Sky than the Orlando Miracle?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_155",
+        "Question": "How long after her playing career ended did Wyckoff become a head coach at Florida State?",
+        "answer": "11"
+    },
+    {
+        "id": "sample_156",
+        "Question": "What was the medal won by Brooke Wyckoff in united states?",
+        "answer": "Jones Cup,2000 Taipei"
+    },
+    {
+        "id": "sample_157",
+        "Question": "How long after Wyckoff won a gold medal at Taipei did she play for the Connecticut Sun?",
+        "answer": "3 years"
+    },
+    {
+        "id": "sample_158",
+        "Question": "If Bangabandhu National Stadium sold out in it's last test, how many people were there?",
+        "answer": "30,000"
+    },
+    {
+        "id": "sample_159",
+        "Question": "How many days passed between the last test in Bangabandhu National Stadium and it's last ODI?",
+        "answer": "13 days"
+    },
+    {
+        "id": "sample_160",
+        "Question": "How long did it take between Bangabandhu National Stadium opening and it hosting an ODI?",
+        "answer": "33 years"
+    },
+    {
+        "id": "sample_161",
+        "Question": "When was the last time that Brodie Merrill won a World Indoor Lacrosse Championship?",
+        "answer": "2015"
+    },
+    {
+        "id": "sample_162",
+        "Question": "When was the first time that Brodie Merrill was a winner in the World Lacrosse Championship?",
+        "answer": "2006"
+    },
+    {
+        "id": "sample_163",
+        "Question": "How many times did Brodie Merrill awarded Transition Player of the Year from 2005?",
+        "answer": "Three (2009-10, 2017)"
+    },
+    {
+        "id": "sample_164",
+        "Question": "What was the age when Brodie Merrill awarded Rookie of the Year 2005?",
+        "answer": "Age of 24"
+    },
+    {
+        "id": "sample_165",
+        "Question": "How many awards did Brodie Merrill win the year he won the World Indoor Lacrosse Championship in Halifax?",
+        "answer": "1"
+    },
+    {
+        "id": "sample_166",
+        "Question": "What age was Brodie Merrill when he was drafted to the NLL?",
+        "answer": "25"
+    },
+    {
+        "id": "sample_167",
+        "Question": "How old was Brodie Merrill when he turned pro?",
+        "answer": "24"
+    },
+    {
+        "id": "sample_168",
+        "Question": "What years did Casey Powell win any medal in world championships?",
+        "answer": "2006, 2011, 2015"
+    },
+    {
+        "id": "sample_169",
+        "Question": "How long before the end of Casey Powell's professional career did he win a medal for the Onondaga nation?",
+        "answer": "1 year"
+    },
+    {
+        "id": "sample_170",
+        "Question": "How old was Casey Powell when he was inducted into the U.S. Lacrosse Hall of Fame?",
+        "answer": "41 years"
+    },
+    {
+        "id": "sample_171",
+        "Question": "How many years ago did Casey Powell played for Syracuse University Team?",
+        "answer": "24 Years ago"
+    },
+    {
+        "id": "sample_172",
+        "Question": "How many years did Casey Powell playing career?",
+        "answer": "17 Years"
+    },
+    {
+        "id": "sample_173",
+        "Question": "When was the last time that Casey Powell won a medal in the World Indoor Lacrosse Championship?",
+        "answer": "2015"
+    },
+    {
+        "id": "sample_174",
+        "Question": "How old was Casey Powell when he was drafted into the NLL?",
+        "answer": "22"
+    },
+    {
+        "id": "sample_175",
+        "Question": "How many years after being drafted was Casey Powell entered into the US Lacrosse Hall of Fame?",
+        "answer": "19"
+    },
+    {
+        "id": "sample_176",
+        "Question": "How many gold medals did Aaron Peirsol win in the 2004 Athens games?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_177",
+        "Question": "How old was Aaron Peirsol when he won silver at the 2000 Sydney Olympics?",
+        "answer": "17 years old"
+    },
+    {
+        "id": "sample_178",
+        "Question": "How many major gold medals did Aaron Peirsol win in 2004?",
+        "answer": "6"
+    },
+    {
+        "id": "sample_179",
+        "Question": "How old was Aaron Peirsol when he first won an Olympic gold medal?",
+        "answer": "21"
+    },
+    {
+        "id": "sample_180",
+        "Question": "How many years did it take for Aaron Peirsol to win all the Olympic medals?",
+        "answer": "4 years"
+    },
+    {
+        "id": "sample_181",
+        "Question": "At what age did Aaron Peirsol win the Winnipeg Pan American Games silver medal?",
+        "answer": "16 years"
+    },
+    {
+        "id": "sample_182",
+        "Question": "How many years after the Athens Olympic gold medal did Aaron Peirsol win the Rome World Championships medal?",
+        "answer": "5 years"
+    },
+    {
+        "id": "sample_183",
+        "Question": "What year did Hannah Mills win her first Gold medal in Rio de Janeiro?",
+        "answer": "2016"
+    },
+    {
+        "id": "sample_184",
+        "Question": "How old was Hannah Mills when she won the silver medal in the Olympic games?",
+        "answer": "24 years old"
+    },
+    {
+        "id": "sample_185",
+        "Question": "What age did Hannah Mills win her first Olympic gold medal?",
+        "answer": "28"
+    },
+    {
+        "id": "sample_186",
+        "Question": "How many gold medals did Hannah Mills win over her athletics career?",
+        "answer": "7"
+    },
+    {
+        "id": "sample_187",
+        "Question": "How old was Hannah Mills when she won the gold in the 2007 European Junior Championships?",
+        "answer": "19 years old"
+    },
+    {
+        "id": "sample_188",
+        "Question": "How many World championship medals did sailor Paul Bert Elvstrøm win in 1958?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_189",
+        "Question": "Between 1948 and 1956, sailor Paul Bert Elvstrøm won how many Olympic gold medals?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_190",
+        "Question": "How many years ago did Paul Elvstrøm first participated in World championships?",
+        "answer": "65 Years ago (1957)"
+    },
+    {
+        "id": "sample_191",
+        "Question": "How many times did Paul Elvstrøm was reached first place in Olympic Games from 1948?",
+        "answer": "4 Times"
+    },
+    {
+        "id": "sample_192",
+        "Question": "How old was Paul Elvstrøm the year he win first gold medal in 1948?",
+        "answer": "20 years old"
+    },
+    {
+        "id": "sample_193",
+        "Question": "How many golds in any form did Witt win?",
+        "answer": "12"
+    },
+    {
+        "id": "sample_194",
+        "Question": "What year did Katarina Witt win her first gold Olympic Medal?",
+        "answer": "1984"
+    },
+    {
+        "id": "sample_195",
+        "Question": "How old was Katarina Witt when she won her first gold medal in 1984 Sarajevo Olympics?",
+        "answer": "19 years old"
+    },
+    {
+        "id": "sample_196",
+        "Question": "What was age when Katarina Witt won first silver medal in European Championships 1982?",
+        "answer": "Age of 17"
+    },
+    {
+        "id": "sample_197",
+        "Question": "How many years were between Mukhortova's bronze medal at the Tallinn European Championships and her bronze at The Hague World Junior Championships?",
+        "answer": "6"
+    },
+    {
+        "id": "sample_198",
+        "Question": "How old was Mukhortova when she won her first gold medal?",
+        "answer": "19"
+    },
+    {
+        "id": "sample_199",
+        "Question": "How old was Maria Mukhortova when she won a silver medal in pairs figure skating in Tarvisio?",
+        "answer": "18 years"
+    },
+    {
+        "id": "sample_200",
+        "Question": "How many medals did Petzold win a year after turning 18?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_201",
+        "Question": "How many years are between Petzold's first silver medal and her first gold medal?",
+        "answer": "6"
+    },
+    {
+        "id": "sample_202",
+        "Question": "What year did Barbara Petzold win a bronze medal in the Olympics?",
+        "answer": "1976"
+    },
+    {
+        "id": "sample_203",
+        "Question": "How old was Barbara Petzold when she won her first silver medal in the World Championships?",
+        "answer": "19 years old"
+    },
+    {
+        "id": "sample_204",
+        "Question": "How many more medals did Petzold win in the 70's than in the 80's?",
+        "answer": "1"
+    },
+    {
+        "id": "sample_205",
+        "Question": "How old was Barbara Petzold when she won gold twice in 1980 Lake Placid Olympics?",
+        "answer": "25 years old"
+    },
+    {
+        "id": "sample_206",
+        "Question": "What was the age when Barbara Petzold first participated in World Championships 1974?",
+        "answer": "Age of 19"
+    },
+    {
+        "id": "sample_207",
+        "Question": "What was the last Olympic games Dimitrij Ovtcharov competed in and won a bronze medal?",
+        "answer": "2020 Tokyo"
+    },
+    {
+        "id": "sample_208",
+        "Question": "How many years before winning bronze in the Tokyo Olympics did Ovtcharov win a gold at the Stuttgart European Championships?",
+        "answer": "11"
+    },
+    {
+        "id": "sample_209",
+        "Question": "During which year did Ovtcharov win the most gold medals in any international competition?",
+        "answer": "2013"
+    },
+    {
+        "id": "sample_210",
+        "Question": "How old was Dimitrij Ovtcharov when he won bronze at the 2020 Tokyo Olympics?",
+        "answer": "32"
+    },
+    {
+        "id": "sample_211",
+        "Question": "How old was Ovtcharov when he won silver in the Beijing Olympics?",
+        "answer": "20"
+    },
+    {
+        "id": "sample_212",
+        "Question": "How long was Kelly Ryan's pro career?",
+        "answer": "7"
+    },
+    {
+        "id": "sample_213",
+        "Question": "How many years after retiring did Kelly Ryan get a divorce?",
+        "answer": "4 years"
+    },
+    {
+        "id": "sample_214",
+        "Question": "How old was Kelly Ryan when they retired?",
+        "answer": "33"
+    },
+    {
+        "id": "sample_215",
+        "Question": "What is the difference in Kelly Ann Ryan's max weight in season compared to off-season?",
+        "answer": "6 kg"
+    },
+    {
+        "id": "sample_216",
+        "Question": "What Olympic Games did Krista Pärmäkoski win bronze for the 10km Freestyle?",
+        "answer": "2018 Pyeongchang"
+    },
+    {
+        "id": "sample_217",
+        "Question": "How long after winning a gold medal at the Junior World Championships did Pärmäkoski win her first medal in the Olympics?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_218",
+        "Question": "How old was Pärmäkoski when she won her most recent medal?",
+        "answer": "32"
+    },
+    {
+        "id": "sample_219",
+        "Question": "What age did Krista Pärmäkoski first olympic win in 2014?",
+        "answer": "Age of 24"
+    },
+    {
+        "id": "sample_220",
+        "Question": "How many medals won by Krista Pärmäkoski in World Championships since 2011?",
+        "answer": "7 medals"
+    },
+    {
+        "id": "sample_221",
+        "Question": "How old was Krista Pärmäkoski when she went to her first World Cup?",
+        "answer": "19 years old"
+    },
+    {
+        "id": "sample_222",
+        "Question": "How old was Krista Pärmäkoski when she won her gold medal in the Junior World Championships?",
+        "answer": "20 years old"
+    },
+    {
+        "id": "sample_223",
+        "Question": "How many years was Murilo Bustamante active in his career?",
+        "answer": "11 years"
+    },
+    {
+        "id": "sample_224",
+        "Question": "What year did Murilo Bustamante win a gold medal in the Brazilian National Championship?",
+        "answer": "1999"
+    },
+    {
+        "id": "sample_225",
+        "Question": "How many years does Murilo Bustamante was in active career?",
+        "answer": "21 Years (1991-2012)"
+    },
+    {
+        "id": "sample_226",
+        "Question": "How long after Bustamante won silver at the Brazilian National Championship did he win gold at the World Jiu-Jitsu Championship?",
+        "answer": "3 years"
+    },
+    {
+        "id": "sample_227",
+        "Question": "In what year did Bustamante win the most medals?",
+        "answer": "1998"
+    },
+    {
+        "id": "sample_228",
+        "Question": "How old was Bustamante when he began his career?",
+        "answer": "25"
+    },
+    {
+        "id": "sample_229",
+        "Question": "How many bronze medals won by Murilo Bustamante since 1996?",
+        "answer": "4 Bronze medals"
+    },
+    {
+        "id": "sample_230",
+        "Question": "What was the age of Murilo Bustamante When he won World Jiu-Jitsu Championship in 1999?",
+        "answer": "Age of 33"
+    },
+    {
+        "id": "sample_231",
+        "Question": "How old was Murilo Bustamante when he finished his career?",
+        "answer": "46 years old"
+    },
+    {
+        "id": "sample_232",
+        "Question": "How many more bronze than golds does the Netherlands have?",
+        "answer": "23"
+    },
+    {
+        "id": "sample_233",
+        "Question": "How many Silver and Bronze medals won by Netherlands at the Olympics from 1900-2022?",
+        "answer": "Silver-149 + Bronze-163 = 312"
+    },
+    {
+        "id": "sample_234",
+        "Question": "How many gold medals won by Netherlands at the Olympics from 1900-2022?",
+        "answer": "140 gold medals"
+    },
+    {
+        "id": "sample_235",
+        "Question": "How many medals won by Netherlands at the Olympics from 1900-2022?",
+        "answer": "Gold-140 + Silver-149 + Bronze-163 = 452"
+    },
+    {
+        "id": "sample_236",
+        "Question": "When was the first apperance of Netherlands in the Olympics?",
+        "answer": "The Netherlands first appearance was in 1900."
+    },
+    {
+        "id": "sample_237",
+        "Question": "How many years went by between the Netherlands first summer and winter games?",
+        "answer": "28"
+    },
+    {
+        "id": "sample_238",
+        "Question": "When was the Netherlands first summer games?",
+        "answer": "1900"
+    },
+    {
+        "id": "sample_239",
+        "Question": "How many silver medals does Netherlands have?",
+        "answer": "The Netherlands has 149 silver medals."
+    },
+    {
+        "id": "sample_240",
+        "Question": "How many gold medals does Netherlands have?",
+        "answer": "The Netherlands has 140 gold medals"
+    },
+    {
+        "id": "sample_241",
+        "Question": "How many more silver medals than gold have been taken by Germany at the Olympics?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_242",
+        "Question": "How many Silver and Bronze medals won by Germany at the Olympics from 1896-2022?",
+        "answer": "Silver-295 + Bronze-307 = 602"
+    },
+    {
+        "id": "sample_243",
+        "Question": "How many winter olympics Germany participated between 1992-2022?",
+        "answer": "9"
+    },
+    {
+        "id": "sample_244",
+        "Question": "How many years does Germany participated in olympics as East and West Germany?",
+        "answer": "20 Years (1968-1988)"
+    },
+    {
+        "id": "sample_245",
+        "Question": "How many years were there between Germany's first appearance in the Summer Olympic Games and the Intercalated Games?",
+        "answer": "10"
+    },
+    {
+        "id": "sample_246",
+        "Question": "When did Germany first have a year at the Winter Olympics but not at the Summer Olympics?",
+        "answer": "1994"
+    },
+    {
+        "id": "sample_247",
+        "Question": "How many years does Italy participated in Winter Olympics appearances?",
+        "answer": "24 Years (1924-2022)"
+    },
+    {
+        "id": "sample_248",
+        "Question": "How many more golds has Italy won than silver?",
+        "answer": "23"
+    },
+    {
+        "id": "sample_249",
+        "Question": "What is the most recent summer olympics attended by Italy?",
+        "answer": "2022"
+    },
+    {
+        "id": "sample_250",
+        "Question": "What year did Italy make it's first appearance at the Winter Olympics?",
+        "answer": "1924"
+    },
+    {
+        "id": "sample_251",
+        "Question": "How many medals won by Italy in Olympics from 1896-2022?",
+        "answer": "742"
+    },
+    {
+        "id": "sample_252",
+        "Question": "What was the first year that Italy was at the Olympics?",
+        "answer": "1896"
+    },
+    {
+        "id": "sample_253",
+        "Question": "Where does Italy rank among nations when it comes to medals won?",
+        "answer": "7"
+    },
+    {
+        "id": "sample_254",
+        "Question": "From which year does Italy participated in Summer Olympics?",
+        "answer": "1896"
+    },
+    {
+        "id": "sample_255",
+        "Question": "How many years are between the Izzie Stevens's first and last appearances?",
+        "answer": "15"
+    },
+    {
+        "id": "sample_256",
+        "Question": "What was the last season that Izzie Stevens appeared in?",
+        "answer": "16"
+    },
+    {
+        "id": "sample_257",
+        "Question": "How many years after the first flight was the Albatros retired?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_258",
+        "Question": "How many days ago did Afghanistan played their last ODI?",
+        "answer": "40 days ago"
+    },
+    {
+        "id": "sample_259",
+        "Question": "How long ago did Afghanistan win the championship in One Day Internationals?",
+        "answer": "4 years"
+    },
+    {
+        "id": "sample_260",
+        "Question": "How many years were between Afghanistan's first ODI and last T20I?",
+        "answer": "13"
+    },
+    {
+        "id": "sample_261",
+        "Question": "How many years after Afghanistan's first World Cup appearance did it achieve full member ICC status?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_262",
+        "Question": "How long was it between Egypt's highest FIFA ranking and its last Group stage result in the African Women's Championship?",
+        "answer": "11 years"
+    },
+    {
+        "id": "sample_263",
+        "Question": "How many years after Egypt's biggest defeat was their biggest win?",
+        "answer": "12"
+    },
+    {
+        "id": "sample_264",
+        "Question": "How far away from their best FIFA ranking are The Cleopatras currently?",
+        "answer": "36 spots"
+    },
+    {
+        "id": "sample_265",
+        "Question": "How long in time are the Cleopatras from their best FIFA ranking, currently?",
+        "answer": "17 years"
+    },
+    {
+        "id": "sample_266",
+        "Question": "How many different personas has professional wrestler Dwayne Johnson used in the sport?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_267",
+        "Question": "How many years long was Dwayne Johnson's professional wrestling career?",
+        "answer": "23"
+    },
+    {
+        "id": "sample_268",
+        "Question": "When was the last time that Dwayne Johnson competed in the ring professionally?",
+        "answer": "2019"
+    },
+    {
+        "id": "sample_269",
+        "Question": "How old was Dwayne Johnson when he began his wrestling career?",
+        "answer": "24 years old"
+    },
+    {
+        "id": "sample_270",
+        "Question": "What was the age when Dwayne Johnson as debut as actor?",
+        "answer": "Age of 27"
+    },
+    {
+        "id": "sample_271",
+        "Question": "How many years did Dwayne Johnson was in wresting career?",
+        "answer": "23 Years"
+    },
+    {
+        "id": "sample_272",
+        "Question": "How many active years did Dwayne Johnson wrestle?",
+        "answer": "23 years"
+    },
+    {
+        "id": "sample_273",
+        "Question": "What was the the age when Hebar Pazardzhik originally retrired from his career?",
+        "answer": "Age of 39"
+    },
+    {
+        "id": "sample_274",
+        "Question": "How many years ago did Hebar Pazardzhik debut his first match?",
+        "answer": "33 years ago"
+    },
+    {
+        "id": "sample_275",
+        "Question": "For how many more years was Steve Austin married to Jeanie Clarke than Kathryn Burrhus?",
+        "answer": "5"
+    },
+    {
+        "id": "sample_276",
+        "Question": "How old was Steve Austin when he started his wrestling career?",
+        "answer": "25"
+    },
+    {
+        "id": "sample_277",
+        "Question": "How many years elapsed between Steve Austin's first retirement and his return match?",
+        "answer": "19"
+    },
+    {
+        "id": "sample_278",
+        "Question": "How old was Steve Austin when he began his professional wrestling career?",
+        "answer": "25 years old"
+    },
+    {
+        "id": "sample_279",
+        "Question": "How old was Steve Austin when he retired from professional wrestling?",
+        "answer": "39 years old"
+    },
+    {
+        "id": "sample_280",
+        "Question": "How long after playing for Monterrey did Mohamed first manage the team?",
+        "answer": "15 years"
+    },
+    {
+        "id": "sample_281",
+        "Question": "How many teams did Antonio Mohamed manage between 2003 and 2006?",
+        "answer": "5"
+    },
+    {
+        "id": "sample_282",
+        "Question": "How many years did Antonio Mohamed manage the team before the team he currently manages?",
+        "answer": "1 year"
+    },
+    {
+        "id": "sample_283",
+        "Question": "How many years did Antonio Mohamed was played for national team as member?",
+        "answer": "3 Years (1989-1991)"
+    },
+    {
+        "id": "sample_284",
+        "Question": "How many teams did Tijuana was worked as manager from 2003-2020?",
+        "answer": "16 Teams"
+    },
+    {
+        "id": "sample_285",
+        "Question": "How many teams in his senior career did Mohamed play for in the 90's?",
+        "answer": "6"
+    },
+    {
+        "id": "sample_286",
+        "Question": "How many goals did Zinedine Zidane was posted for Netherlands National team from 1988-2006?",
+        "answer": "35 goals"
+    },
+    {
+        "id": "sample_287",
+        "Question": "How many years did Zinedine Zidane was played senior career?",
+        "answer": "17 Years played"
+    },
+    {
+        "id": "sample_288",
+        "Question": "How many years did Zinedine Zidane spend in the youth division?",
+        "answer": "9"
+    },
+    {
+        "id": "sample_289",
+        "Question": "When did Zinedine Zidane's career start as a senior?",
+        "answer": "1988"
+    },
+    {
+        "id": "sample_290",
+        "Question": "How much longer was Zidane's senior career than his youth career?",
+        "answer": "9 years"
+    },
+    {
+        "id": "sample_291",
+        "Question": "How long after playing for Real Madrid did Zidane become its assistant manager?",
+        "answer": "7 years"
+    },
+    {
+        "id": "sample_292",
+        "Question": "How many years did Roy Emerson play at an amateur level until he turned pro?",
+        "answer": "15 years"
+    },
+    {
+        "id": "sample_293",
+        "Question": "How old was Roy Emerson when he began to play professionally?",
+        "answer": "32 years old"
+    },
+    {
+        "id": "sample_294",
+        "Question": "When was the last time that Roy Emerson won Wimbleton?",
+        "answer": "1971"
+    },
+    {
+        "id": "sample_295",
+        "Question": "How long after winning a doubles tournament did Roy Emerson win a singles tournament?",
+        "answer": "2 years"
+    },
+    {
+        "id": "sample_296",
+        "Question": "How many Davis Cups did Roy Emerson compete in after he turned pro?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_297",
+        "Question": "How many total years of amateur playing and pro playing did Roy Emerson have?",
+        "answer": "30"
+    },
+    {
+        "id": "sample_298",
+        "Question": "When was the first time that Roy Emerson won the Davis Cup?",
+        "answer": "1959"
+    },
+    {
+        "id": "sample_299",
+        "Question": "How long did it take Roy Emereson to go from amateur to pro?",
+        "answer": "15 years"
+    },
+    {
+        "id": "sample_300",
+        "Question": "How old was Roy Emerson when he retired from playin professionally?",
+        "answer": "47 years old"
+    },
+    {
+        "id": "sample_301",
+        "Question": "When did Roy Emerson first win a Grand Slam Singles Tournament?",
+        "answer": "1961"
+    },
+    {
+        "id": "sample_302",
+        "Question": "How long after turning pro did Roy Emerson retire?",
+        "answer": "15 years"
+    },
+    {
+        "id": "sample_303",
+        "Question": "When was the most recent time that Roy Emerson won the Australian Open?",
+        "answer": "1969"
+    },
+    {
+        "id": "sample_304",
+        "Question": "How old was Roy Emerson when he first won the French Open Doubles?",
+        "answer": "27"
+    },
+    {
+        "id": "sample_305",
+        "Question": "How many times did Emerson win multiple Grand Slam doubles in a single year?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_306",
+        "Question": "What year was Roy Emerson inducted into the International Tennis Hall of Fame?",
+        "answer": "1982"
+    },
+    {
+        "id": "sample_307",
+        "Question": "How long did Roy Emerson play in the amateur league before going professional?",
+        "answer": "15 years"
+    },
+    {
+        "id": "sample_308",
+        "Question": "How long did Roy Emerson play professionally?",
+        "answer": "15 years"
+    },
+    {
+        "id": "sample_309",
+        "Question": "How many years were between when Nicklaus first won the U.S. Open and last won the Masters Tournament?",
+        "answer": "24"
+    },
+    {
+        "id": "sample_310",
+        "Question": "How many championships and awards did Nicklaus win in 1975?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_311",
+        "Question": "How long after his marriage did Nicklaus turn professional?",
+        "answer": "1 year"
+    },
+    {
+        "id": "sample_312",
+        "Question": "When was the first time that Jack Nicklaus won a Masters Tournament?",
+        "answer": "1963"
+    },
+    {
+        "id": "sample_313",
+        "Question": "How many years after turning pro did Jack Nicklaus win a Masters Tournament?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_314",
+        "Question": "How many years had Jack Nicklaus been playing when he won his first Masters Tournament?",
+        "answer": "2 years"
+    },
+    {
+        "id": "sample_315",
+        "Question": "How many years had Jack Nicklaus been playing when he won his last PGA as leading money winner?",
+        "answer": "15 years"
+    },
+    {
+        "id": "sample_316",
+        "Question": "What was the last year that Jack Nicklaus won a U.S. Open?",
+        "answer": "1980"
+    },
+    {
+        "id": "sample_317",
+        "Question": "How many years were between the time Diegel first won the PGA Championship and when he achieved T16 at the Master's?",
+        "answer": "6"
+    },
+    {
+        "id": "sample_318",
+        "Question": "How many years before Diegel died was the picture taken?",
+        "answer": "19"
+    },
+    {
+        "id": "sample_319",
+        "Question": "How long was Leo Diegel married?",
+        "answer": "17 years"
+    },
+    {
+        "id": "sample_320",
+        "Question": "How long after Diegel started his pro career did he marry Violet Bird Diegel?",
+        "answer": "18 years"
+    },
+    {
+        "id": "sample_321",
+        "Question": "How many years after winning his first competition did Leo Diegel pass away?",
+        "answer": "31"
+    },
+    {
+        "id": "sample_322",
+        "Question": "How many times did Leo Diegel was won the PGA Championship from 1916?",
+        "answer": "2 Times (1928,1929)"
+    },
+    {
+        "id": "sample_323",
+        "Question": "How many years ago did Leo Diegel was died?",
+        "answer": "71 Years ago"
+    },
+    {
+        "id": "sample_324",
+        "Question": "How many years had Sam Snead been playing professionally when he won the Masters?",
+        "answer": "15 years"
+    },
+    {
+        "id": "sample_325",
+        "Question": "What year did Sam Snead begin playing professionally?",
+        "answer": "1934"
+    },
+    {
+        "id": "sample_326",
+        "Question": "How many years separate the time Sam Snead began playing professionally and his death?",
+        "answer": "68 years"
+    },
+    {
+        "id": "sample_327",
+        "Question": "How many years before he married Audrey Karnes Snead did Snead begin his pro career?",
+        "answer": "6"
+    },
+    {
+        "id": "sample_328",
+        "Question": "How many championships and awards did Snead win in 1949?",
+        "answer": "5"
+    },
+    {
+        "id": "sample_329",
+        "Question": "How long after starting his pro career did Snead win his first championship?",
+        "answer": "8 years"
+    },
+    {
+        "id": "sample_330",
+        "Question": "How old was Sam Snead when he turned professional?",
+        "answer": "32"
+    },
+    {
+        "id": "sample_331",
+        "Question": "What year was Chuck Howley drafted into the NFL?",
+        "answer": "1958"
+    },
+    {
+        "id": "sample_332",
+        "Question": "How many years did Chuck Howley play for the Los Raiders?",
+        "answer": "12"
+    },
+    {
+        "id": "sample_333",
+        "Question": "What was the total number of years that Chuck Howley was a 5× First-team All-Pro?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_334",
+        "Question": "How many times did Chuck Howley play in the Pro Bowl when he was with the Raiders?",
+        "answer": "6"
+    },
+    {
+        "id": "sample_335",
+        "Question": "How old was Chuck Howley when his NFL career began?",
+        "answer": "22"
+    },
+    {
+        "id": "sample_336",
+        "Question": "When was the last year that Chuck Howley played in the Pro Bowl?",
+        "answer": "1971"
+    },
+    {
+        "id": "sample_337",
+        "Question": "During what year did Manning receive the most awards or highlights?",
+        "answer": "2003"
+    },
+    {
+        "id": "sample_338",
+        "Question": "How many years longer did Manning play for the New York Giants than Ole Miss?",
+        "answer": "11"
+    },
+    {
+        "id": "sample_339",
+        "Question": "In 2011 how many passing yards in a single postseason did Eli Manning have?",
+        "answer": "1,219 yards"
+    },
+    {
+        "id": "sample_340",
+        "Question": "What were the number of years that Eli Manning played for the Giants before he won the Walter Payton NFL Man of the Year in 2016?",
+        "answer": "12 years"
+    },
+    {
+        "id": "sample_341",
+        "Question": "What year was Eli Manning drafted into the NFL?",
+        "answer": "2004"
+    },
+    {
+        "id": "sample_342",
+        "Question": "How many years did Eli Manning play for the New York Giants?",
+        "answer": "15"
+    },
+    {
+        "id": "sample_343",
+        "Question": "How many years did Eli Manning attend school at Ole Miss?",
+        "answer": "4 years"
+    },
+    {
+        "id": "sample_344",
+        "Question": "How many years after Eli Manning attended Ole Miss did he win the Bart Starr award?",
+        "answer": "21 years"
+    },
+    {
+        "id": "sample_345",
+        "Question": "How many years did James Worthy play professionally?",
+        "answer": "12 years"
+    },
+    {
+        "id": "sample_346",
+        "Question": "When was the last time that James Worthy played in an NBA All Stars game?",
+        "answer": "1992"
+    },
+    {
+        "id": "sample_347",
+        "Question": "When was the first time that James worthy was chosen as an All-American player?",
+        "answer": "1978"
+    },
+    {
+        "id": "sample_348",
+        "Question": "For how many years did James Worthy play for the NBA?",
+        "answer": "12"
+    },
+    {
+        "id": "sample_349",
+        "Question": "How many years after winning the gold medal at the FIBA U19 World Championship did Worthy enter the draft?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_350",
+        "Question": "How many awards and highlights did Worthy have in the same year as the last year he was in college?",
+        "answer": "5"
+    },
+    {
+        "id": "sample_351",
+        "Question": "How long after Worthy's NBA career began did he win his first NBA championship?",
+        "answer": "3 years"
+    },
+    {
+        "id": "sample_352",
+        "Question": "How long had James Worthy been playing professionally when he won the NCAA Championship?",
+        "answer": "1"
+    },
+    {
+        "id": "sample_353",
+        "Question": "How many years ago did Nate Archibald was received Basketball Hall of Fame as player?",
+        "answer": "16 Years ago (2006)"
+    },
+    {
+        "id": "sample_354",
+        "Question": "How many years did Nate Archibald play professionally for?",
+        "answer": "14"
+    },
+    {
+        "id": "sample_355",
+        "Question": "When was the last time that Nate Archibald was an NBA All Star?",
+        "answer": "1982"
+    },
+    {
+        "id": "sample_356",
+        "Question": "How many years did Nate Archibald was active carreer since 1970?",
+        "answer": "14 Years"
+    },
+    {
+        "id": "sample_357",
+        "Question": "What was the age when Scottie Pippen won gold medal in 1996 Atlanta Olympic Games?",
+        "answer": "Age of 31"
+    },
+    {
+        "id": "sample_358",
+        "Question": "How old was Pippwn when he won his first Olympic gold?",
+        "answer": "26"
+    },
+    {
+        "id": "sample_359",
+        "Question": "How long after Pippen entered the NBA draft did was he awarded NBA steals leader?",
+        "answer": "8 years"
+    },
+    {
+        "id": "sample_360",
+        "Question": "How many years longer did Pippen play for the Chicago Bulls than for the Portland Trail Blazers?",
+        "answer": "8"
+    },
+    {
+        "id": "sample_361",
+        "Question": "How many years ago did Scottie Pippen awarded NBA steals leader?",
+        "answer": "27 Years ago (1995)"
+    },
+    {
+        "id": "sample_362",
+        "Question": "How many gold medals had Carolina Albuquerque won by the time she got a silver medal in Rio de Janeiro?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_363",
+        "Question": "What was the first year that Carolina Albuquerque competed on the national team?",
+        "answer": "1997"
+    },
+    {
+        "id": "sample_364",
+        "Question": "How many years separate Carolina Albuquerque's silver medals in the the World Grand Prix and the World Championship?",
+        "answer": "7"
+    },
+    {
+        "id": "sample_365",
+        "Question": "How long after her first gold medal in any international competition did Carolina Albuquerque win a gold in Olympics?",
+        "answer": "9 years"
+    },
+    {
+        "id": "sample_366",
+        "Question": "In which year did Carolina Albuquerque win the most gold medals in international competition?",
+        "answer": "2008"
+    },
+    {
+        "id": "sample_367",
+        "Question": "How many gold medals had Carolina Albuquerque won by the year 2004?",
+        "answer": "1"
+    },
+    {
+        "id": "sample_368",
+        "Question": "What years did Carolina Albuquerque win medals in Asia?",
+        "answer": "1999, 2005, 2006, 2008"
+    },
+    {
+        "id": "sample_369",
+        "Question": "What was the age when Thiago Alves won first medal in Olympic Games 2012?",
+        "answer": "Age of 26"
+    },
+    {
+        "id": "sample_370",
+        "Question": "How many gold medals did Thiago Alves throughout his career?",
+        "answer": "9"
+    },
+    {
+        "id": "sample_371",
+        "Question": "How many years separate the two gold medals that Thiago Alves won in the World Grand Championships Cup?",
+        "answer": "4 years"
+    },
+    {
+        "id": "sample_372",
+        "Question": "How old was Thiago Alves when he won gold in the Pan American games in 2011?",
+        "answer": "25 years"
+    },
+    {
+        "id": "sample_373",
+        "Question": "How many years did Thiago Alves played for Grêmio Náutico União from 2000?",
+        "answer": "3 Years (2000-2003)"
+    },
+    {
+        "id": "sample_374",
+        "Question": "What year did Matt Biondi win 4 gold medals in the Summer Universiade games?",
+        "answer": "1985"
+    },
+    {
+        "id": "sample_375",
+        "Question": "How many years after winning his first medal in an Olympic Game did Matt Biondi win a medal in his last Olympic Game?",
+        "answer": "8"
+    },
+    {
+        "id": "sample_376",
+        "Question": "How many gold medals did Matt Biondi win in the 1988 Seoul Olympics?",
+        "answer": "5"
+    },
+    {
+        "id": "sample_377",
+        "Question": "What year did Matt Biondi win his only bronze in the Olympics?",
+        "answer": "1988"
+    },
+    {
+        "id": "sample_378",
+        "Question": "How many gold medals won by Matt Biondi in Olympics 1988?",
+        "answer": "5 Gold Medals"
+    },
+    {
+        "id": "sample_379",
+        "Question": "How many gold medals won by Matt Biondi in his career upto 2022 for 100m freestyle ?",
+        "answer": "7 Gold Medals"
+    },
+    {
+        "id": "sample_380",
+        "Question": "How many gold medals won by Matt Biondi in World Championships?",
+        "answer": "6 Gold medals"
+    },
+    {
+        "id": "sample_381",
+        "Question": "When was the last time that Matt Biondi won a medal in the Olympic Games?",
+        "answer": "1992"
+    },
+    {
+        "id": "sample_382",
+        "Question": "When did Matt Biondi first win a gold at the Olympic Games?",
+        "answer": "1984"
+    },
+    {
+        "id": "sample_383",
+        "Question": "How many 4x100 m freestyle medals won by Tom Jager in his career upto 2022?",
+        "answer": "11 medals"
+    },
+    {
+        "id": "sample_384",
+        "Question": "How many medals won by Tom Jager in Olympics 1988?",
+        "answer": "3 medals (2 Gold + 1 Silver)"
+    },
+    {
+        "id": "sample_385",
+        "Question": "In what year did Jager win the most overall Olympic medals?",
+        "answer": "1988"
+    },
+    {
+        "id": "sample_386",
+        "Question": "How many years were between Jager's gold medals at the Los Angeles Olympics and his gold medals at the Edmonton Pan Am Games?",
+        "answer": "7"
+    },
+    {
+        "id": "sample_387",
+        "Question": "How many gold medals has Chen Yufei won in mixed team competition?",
+        "answer": "9"
+    },
+    {
+        "id": "sample_388",
+        "Question": "Since 2013 what year did Chen Yufei not win a medal in badminton?",
+        "answer": "2021"
+    },
+    {
+        "id": "sample_389",
+        "Question": "How many gold medals won by Chen Yufei in Asian Junior Championships since 2013?",
+        "answer": "5 Gold medals"
+    },
+    {
+        "id": "sample_390",
+        "Question": "In what year did Chen Yufei win the most medals?",
+        "answer": "2016"
+    },
+    {
+        "id": "sample_391",
+        "Question": "How many years are between Chen Yufei's gold medal at the Kota Kinabalu Asian Junior Championships and her gold medal at the Tokyo Olympics?",
+        "answer": "7"
+    },
+    {
+        "id": "sample_392",
+        "Question": "How many years ago did Shi Yuqi achived highest rank?",
+        "answer": "5 Years ago (2017)"
+    },
+    {
+        "id": "sample_393",
+        "Question": "In what year did Shi Yuqi win the most gold medals?",
+        "answer": "2014"
+    },
+    {
+        "id": "sample_394",
+        "Question": "How many years separate Yuqi's silver medal at the World Championship and his silver at the Asian Junior Championships?",
+        "answer": "6"
+    },
+    {
+        "id": "sample_395",
+        "Question": "When was the first time that Shi Yuqi won a medal in the Asian Junior Championships?",
+        "answer": "2012"
+    },
+    {
+        "id": "sample_396",
+        "Question": "How many medals has Shi Yuqi won after 2012?",
+        "answer": "20"
+    },
+    {
+        "id": "sample_397",
+        "Question": "When was the most recent year in which Shi Yuqi won a medal?",
+        "answer": "2021"
+    },
+    {
+        "id": "sample_398",
+        "Question": "How many Mixed Team gold medals won by Shi Yuqi in Asian Junior Championships from 2012?",
+        "answer": "Two (2013, 2014)"
+    },
+    {
+        "id": "sample_399",
+        "Question": "How many gold medals did Wang Xiaoli win the year she was ranked number 1?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_400",
+        "Question": "In what year did Wang Xiaoli win the most bronze medals?",
+        "answer": "2006"
+    },
+    {
+        "id": "sample_401",
+        "Question": "How many years separate Wang Xiaoli's gold medal at the London World Championship and her gold medal at the Asian Junior Championships?",
+        "answer": "5"
+    },
+    {
+        "id": "sample_402",
+        "Question": "When was the most recent time that Wang Xiaoli received a medal in the Asian Junior Championships?",
+        "answer": "2007"
+    },
+    {
+        "id": "sample_403",
+        "Question": "When was the first time that Wang Xiaoli won a medal in the World Championships?",
+        "answer": "2010"
+    },
+    {
+        "id": "sample_404",
+        "Question": "How many times in 2009 did Wang Xiaoli receive a medal in the East Asian Games?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_405",
+        "Question": "How many years ago did Wang Xiaoli achived Highest ranking?",
+        "answer": "8 Years ago"
+    },
+    {
+        "id": "sample_406",
+        "Question": "What was the age when Wang Xiaoli won first gold medal in Asian Junior Championships 2006?",
+        "answer": "Age of 17"
+    },
+    {
+        "id": "sample_407",
+        "Question": "How many years ago did Casey Mears last participated in IndyCar Series?",
+        "answer": "21 Years ago (2001)"
+    },
+    {
+        "id": "sample_408",
+        "Question": "How many years ago did Casey Mears received the award of Coca-Cola 600 winner?",
+        "answer": "15 Years ago (2007)"
+    },
+    {
+        "id": "sample_409",
+        "Question": "How many years did Casey Mears participated in NASCAR Xfinity Series?",
+        "answer": "17 Years (2001-2017)"
+    },
+    {
+        "id": "sample_410",
+        "Question": "What was the last race that Casey Mears ran in the Champ Car Series in 2001?",
+        "answer": "Marlboro 500"
+    },
+    {
+        "id": "sample_411",
+        "Question": "How many years did Casey Mears career last in the Champ Car series?",
+        "answer": "2 years"
+    },
+    {
+        "id": "sample_412",
+        "Question": "What year did Casey Mears have his first Daytona 500 race?",
+        "answer": "2003"
+    },
+    {
+        "id": "sample_413",
+        "Question": "How many top 10 NASCAR finishes does Cody Ware have over all series?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_414",
+        "Question": "How many different NASCAR series has Cody Ware competed in?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_415",
+        "Question": "How old was Cody Ware when he debut in the NASCAR Cup Series?",
+        "answer": "22 years old"
+    },
+    {
+        "id": "sample_416",
+        "Question": "How many years did Cody Ware race in the NASCAR Xfinity Cup Series?",
+        "answer": "7 years"
+    },
+    {
+        "id": "sample_417",
+        "Question": "How many years ago did Cody Ware won Lamborghini Super Trofeo North America Rookie of the Year 2014?",
+        "answer": "8 Years ago"
+    },
+    {
+        "id": "sample_418",
+        "Question": "What was the age when Cody Ware participated first race in NASCAR PEAK Mexico Series 2014?",
+        "answer": "Age of 19"
+    },
+    {
+        "id": "sample_419",
+        "Question": "How many races particiapted by Cody Ware in NASCAR Xfinity Series since 2014?",
+        "answer": "28 races"
+    },
+    {
+        "id": "sample_420",
+        "Question": "How old was Cody Ware when he competed in the NASCAR PEAK Mexico Series?",
+        "answer": "19 years old"
+    },
+    {
+        "id": "sample_421",
+        "Question": "What year did Cody Ware race for his first NASCAR Cup series race?",
+        "answer": "2017"
+    },
+    {
+        "id": "sample_422",
+        "Question": "How many years ago did Tony Stewart was awarded IROC champion?",
+        "answer": "16 Years ago (2006)"
+    },
+    {
+        "id": "sample_423",
+        "Question": "What was the age when Tony Stewart first participated in IndyCar Series career?",
+        "answer": "Age of 21"
+    },
+    {
+        "id": "sample_424",
+        "Question": "What year did Tony Stewart win his first NASCAR Cup Series Race?",
+        "answer": "2002"
+    },
+    {
+        "id": "sample_425",
+        "Question": "At what age was Stewart inducted into the NASCAR Hall of Fame?",
+        "answer": "49"
+    },
+    {
+        "id": "sample_426",
+        "Question": "How many total top 10s in any NASCAR series does Stewart have?",
+        "answer": "354"
+    },
+    {
+        "id": "sample_427",
+        "Question": "What year did Tony Stewart win his last NASCAR Series Cup Race?",
+        "answer": "2016"
+    },
+    {
+        "id": "sample_428",
+        "Question": "How old was Tony Stewart when he won his first 2002 NASCAR Series Race?",
+        "answer": "31 years old"
+    },
+    {
+        "id": "sample_429",
+        "Question": "How many times did  Tony Stewart wins NASCAR Cup Series from 1999-2016?",
+        "answer": "49 wins"
+    },
+    {
+        "id": "sample_430",
+        "Question": "How many total medals has B.J. Neufeld win in all Tim Horton Brier events?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_431",
+        "Question": "How old was B. J. Neufeld when he received his last medal?",
+        "answer": "36"
+    },
+    {
+        "id": "sample_432",
+        "Question": "When was the last time that B. J. Neufeld won any type of medal?",
+        "answer": "2022"
+    },
+    {
+        "id": "sample_433",
+        "Question": "How many years has B.J. Neufeld been associated with a member association?",
+        "answer": "15 years"
+    },
+    {
+        "id": "sample_434",
+        "Question": "How many years ago did B. J. Neufeld was top ranked in CTRS?",
+        "answer": "8 Years ago"
+    },
+    {
+        "id": "sample_435",
+        "Question": "When was the first time that Dawn McEwen made an appearance at the World Championships?",
+        "answer": "2008"
+    },
+    {
+        "id": "sample_436",
+        "Question": "When was the first time that Dawn McEwen got a gold medal at the Scotties Tournament of Hearts?",
+        "answer": "2008"
+    },
+    {
+        "id": "sample_437",
+        "Question": "How old was Dawn McEwen when she won the gold at the 2014 Sochi Olympics?",
+        "answer": "34 years old"
+    },
+    {
+        "id": "sample_438",
+        "Question": "What year did Dawn McEwen make her first Olympic appearance?",
+        "answer": "2014"
+    },
+    {
+        "id": "sample_439",
+        "Question": "How many times did Dawn McEwen was appeared in Olympic games from 2014?",
+        "answer": "Two Times (2014, 2022)"
+    },
+    {
+        "id": "sample_440",
+        "Question": "When did Emma Kathryn Miskew first win a medal in the World Curling Championships?",
+        "answer": "2013"
+    },
+    {
+        "id": "sample_441",
+        "Question": "What was the age when Emma Miskew was appeared in 2018 Olympic Games?",
+        "answer": "Age of 29"
+    },
+    {
+        "id": "sample_442",
+        "Question": "How many medals did Miskew the first year she had a number one CTRS ranking?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_443",
+        "Question": "How many years are between Miskew's gold medal at the Canada Winter Games and her gold medal at the Canadian Olympic Curling Trials?",
+        "answer": "10"
+    },
+    {
+        "id": "sample_444",
+        "Question": "How old was Emma Kathryn Miskew when she made her first Hearts appearance?",
+        "answer": "22"
+    },
+    {
+        "id": "sample_445",
+        "Question": "How many years was Hulk Hogan active as a wrestler?",
+        "answer": "35"
+    },
+    {
+        "id": "sample_446",
+        "Question": "How many years ago did Linda Hogan was debut his wrestling career?",
+        "answer": "45 years ago (1977)"
+    },
+    {
+        "id": "sample_447",
+        "Question": "What year did Hulk Hogan become an actor?",
+        "answer": "1982"
+    },
+    {
+        "id": "sample_448",
+        "Question": "How old was Hulk Hogan when he married Linda Hogan?",
+        "answer": "30 years old"
+    },
+    {
+        "id": "sample_449",
+        "Question": "From which year did Linda Hogan became the actor?",
+        "answer": "1982"
+    },
+    {
+        "id": "sample_450",
+        "Question": "How many years did Hulk Hogan actively wrestle?",
+        "answer": "35 years"
+    },
+    {
+        "id": "sample_451",
+        "Question": "What year did Art Wilson play for the Cleveland Indians?",
+        "answer": "1921"
+    },
+    {
+        "id": "sample_452",
+        "Question": "How old was Art Wilson when he made his MLB debut in 1908?",
+        "answer": "23 years old"
+    },
+    {
+        "id": "sample_453",
+        "Question": "How much longer did Wilson play for the New York Giants than the Boston Braves?",
+        "answer": "3 years"
+    },
+    {
+        "id": "sample_454",
+        "Question": "How long after his last MLB appearance did Wilson die?",
+        "answer": "39 years"
+    },
+    {
+        "id": "sample_455",
+        "Question": "How many years did Art Wilson play for MLB?",
+        "answer": "13 years"
+    },
+    {
+        "id": "sample_456",
+        "Question": "How many years after his MLB debut did Art Wilson play for the Pittsburgh Pirates?",
+        "answer": "8"
+    },
+    {
+        "id": "sample_457",
+        "Question": "What was Art Wilson's last year playing in the Major League?",
+        "answer": "1921"
+    },
+    {
+        "id": "sample_458",
+        "Question": "How many years did Babe Young play for MLB?",
+        "answer": "12 years"
+    },
+    {
+        "id": "sample_459",
+        "Question": "How old was Young when he made his MLB debut?",
+        "answer": "21"
+    },
+    {
+        "id": "sample_460",
+        "Question": "How many years longer did Young play for the New York Giants the second time than for the Cincinnati Reds?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_461",
+        "Question": "How many years after his final MLB appearance did Young die?",
+        "answer": "35"
+    },
+    {
+        "id": "sample_462",
+        "Question": "What year did Babe Young make his MBL debut?",
+        "answer": "1936"
+    },
+    {
+        "id": "sample_463",
+        "Question": "How old was Babe Young when he began his career with MLB?",
+        "answer": "21 years old"
+    },
+    {
+        "id": "sample_464",
+        "Question": "How many years did Babe Young was played for Cincinnati Reds?",
+        "answer": "2 Years"
+    },
+    {
+        "id": "sample_465",
+        "Question": "What was the age of Babe Young When he played MLB debut?",
+        "answer": "Age of 21"
+    },
+    {
+        "id": "sample_466",
+        "Question": "How long after McCoy made his last MLB appearance did he die?",
+        "answer": "70 years"
+    },
+    {
+        "id": "sample_467",
+        "Question": "How long after making his MLB debut did McCoy play for the Philadelphia Athletics?",
+        "answer": "2 years"
+    },
+    {
+        "id": "sample_468",
+        "Question": "How old was McCoy when he made his MLB debut?",
+        "answer": "23"
+    },
+    {
+        "id": "sample_469",
+        "Question": "For how many years did Benny McCoy play professional baseball?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_470",
+        "Question": "How many total years did Benny McCoy for MLB?",
+        "answer": "3 years"
+    },
+    {
+        "id": "sample_471",
+        "Question": "When was the last season that Benny McCoy played professionally?",
+        "answer": "1941"
+    },
+    {
+        "id": "sample_472",
+        "Question": "How old was Benny McCoy when he made his MLB debut?",
+        "answer": "23 years old"
+    },
+    {
+        "id": "sample_473",
+        "Question": "How may years did Benny McCoy play for the Detroit Tigers?",
+        "answer": "1 year"
+    },
+    {
+        "id": "sample_474",
+        "Question": "How old was  Owen when he began is senior career?",
+        "answer": "17"
+    },
+    {
+        "id": "sample_475",
+        "Question": "How old was Michael Owen the year he went to Real Madrid?",
+        "answer": "25"
+    },
+    {
+        "id": "sample_476",
+        "Question": "How many years were there between when Owen began to play for Real Madrid and stopped playing for Manchester United?",
+        "answer": "8"
+    },
+    {
+        "id": "sample_477",
+        "Question": "How many more years did Owen play for Liverpool than Newcastle United?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_478",
+        "Question": "How long did Michael Owen senior career last?",
+        "answer": "17 years"
+    },
+    {
+        "id": "sample_479",
+        "Question": "How old was Draško Nenadić when he started playing for the national team?",
+        "answer": "22"
+    },
+    {
+        "id": "sample_480",
+        "Question": "How many professional clubs has Nenadić played for?",
+        "answer": "11"
+    },
+    {
+        "id": "sample_481",
+        "Question": "For how many years did Draško Nenadić play with his first team?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_482",
+        "Question": "What is the player number of Draško Nenadić in 2022?",
+        "answer": "5"
+    },
+    {
+        "id": "sample_483",
+        "Question": "How many times before 2020 has Emilie Hegh Arntzen won a medal in the European Championships?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_484",
+        "Question": "When was the first time that Emilie Hegh Arntzen won a medal in the European Championships?",
+        "answer": "2014"
+    },
+    {
+        "id": "sample_485",
+        "Question": "When was the last time that Emilie Hegh Arntzen has won a medal in any competition?",
+        "answer": "2021"
+    },
+    {
+        "id": "sample_486",
+        "Question": "How many years are between Arntzen's gold medal at the Croatia/Hungary\tEuropean Championship and her gold medal at the Spain World Championship?",
+        "answer": "7"
+    },
+    {
+        "id": "sample_487",
+        "Question": "How old was Arntzen when she began to play for her first senior club?",
+        "answer": "16"
+    },
+    {
+        "id": "sample_488",
+        "Question": "When was the last time that  Emilie Hegh Arntzen received a medal in the World Championships?",
+        "answer": "2020"
+    },
+    {
+        "id": "sample_489",
+        "Question": "In what year did  Emilie Hegh Arntzen receive their last medal?",
+        "answer": "2021"
+    },
+    {
+        "id": "sample_490",
+        "Question": "How many years did Emilie Hegh Arntzen was played for Byåsen HE from 2014?",
+        "answer": "3 Years"
+    },
+    {
+        "id": "sample_491",
+        "Question": "How old was Arntzen when she began playing for CSM București?",
+        "answer": "27"
+    },
+    {
+        "id": "sample_492",
+        "Question": "How many years separate Arntzen's most recent gold medal and her earliest gold medal?",
+        "answer": "7"
+    },
+    {
+        "id": "sample_493",
+        "Question": "How many years longer did Hasanefendić manage Switzerland than VfL Gummersbach?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_494",
+        "Question": "What was the age when Sead Hasanefendić was worked as manager for GWD Minden in 2013?",
+        "answer": "Age of 65"
+    },
+    {
+        "id": "sample_495",
+        "Question": "How many years did Sead Hasanefendić was worked as manager for Switzerland team from 1980?",
+        "answer": "6 Years"
+    },
+    {
+        "id": "sample_496",
+        "Question": "How old was Hasanefendić when he managed his first team?",
+        "answer": "31"
+    },
+    {
+        "id": "sample_497",
+        "Question": "How longer after Hasanefendić stop managing RK Metaloplastika did he begin managing his current team?",
+        "answer": "38 years"
+    },
+    {
+        "id": "sample_498",
+        "Question": "How many years did Žarko Marković was played for Montenegro?",
+        "answer": "Six years (2006-2012)"
+    },
+    {
+        "id": "sample_499",
+        "Question": "What is the number of senior clubs that Žarko Marković has played on for four years?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_500",
+        "Question": "How many years did Žarko Marković play for Montegengro?",
+        "answer": "6"
+    },
+    {
+        "id": "sample_501",
+        "Question": "For how many years did Žarko Marković play for Montenegro?",
+        "answer": "7"
+    },
+    {
+        "id": "sample_502",
+        "Question": "Which year did Novak Djokovic won the hat-tricks title of Australian Open?",
+        "answer": "2011-2013 and 2019-2021"
+    },
+    {
+        "id": "sample_503",
+        "Question": "How many Wimbledon titles won by Novak Djokovic from 2015?",
+        "answer": "4"
+    },
+    {
+        "id": "sample_504",
+        "Question": "What year did Novak Djokovic win his first U.S. Open?",
+        "answer": "2011"
+    },
+    {
+        "id": "sample_505",
+        "Question": "What Olympic Games did Novak Djokovic win a bronze medal?",
+        "answer": "2008 Beijing"
+    },
+    {
+        "id": "sample_506",
+        "Question": "How many Olympic Games Novak Djokovic have participated?",
+        "answer": "1"
+    },
+    {
+        "id": "sample_507",
+        "Question": "How many times he has won US Open?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_508",
+        "Question": "What is the highest ranging of Novak Djokovic till now?",
+        "answer": "1"
+    },
+    {
+        "id": "sample_509",
+        "Question": "How old was Novak Djokovic when he competed in the Olympic Games?",
+        "answer": "21 years old"
+    },
+    {
+        "id": "sample_510",
+        "Question": "For how many years did Roger Federer  play professionally before achieving his highest ranking?",
+        "answer": "6"
+    },
+    {
+        "id": "sample_511",
+        "Question": "In how many Grand Slam singles tournaments did Roger Federer play in 2005?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_512",
+        "Question": "How many years after turning pro did Roger Federer win a silver Olympic medal?",
+        "answer": "14"
+    },
+    {
+        "id": "sample_513",
+        "Question": "How old was Roger Federer when he go his first Olympic gold medal?",
+        "answer": "27 years"
+    },
+    {
+        "id": "sample_514",
+        "Question": "How many years after getting the Olympic gold medal did Roger Federer get his Olympic silver medal?",
+        "answer": "4 years"
+    },
+    {
+        "id": "sample_515",
+        "Question": "At what age did Roger Federer get his highest ranking?",
+        "answer": "23 years"
+    },
+    {
+        "id": "sample_516",
+        "Question": "When was the last year that Davy Jones competed in the Le Mans division?",
+        "answer": "1996"
+    },
+    {
+        "id": "sample_517",
+        "Question": "How many years did Davy Jones race the 24 Hours of Le Mans career?",
+        "answer": "4 years"
+    },
+    {
+        "id": "sample_518",
+        "Question": "How many NASCAR Cup Series and IndyCar Series races combined has Davy Jones run?",
+        "answer": "8"
+    },
+    {
+        "id": "sample_519",
+        "Question": "What is the number of years that Davy Jones competed in the 24 Hours of Le Mans race?",
+        "answer": "5"
+    },
+    {
+        "id": "sample_520",
+        "Question": "In what year would Davy Jones have been 30?",
+        "answer": "1994"
+    },
+    {
+        "id": "sample_521",
+        "Question": "What year did Davy Jones run his first Daytona 500 race?",
+        "answer": "1995"
+    },
+    {
+        "id": "sample_522",
+        "Question": "How old was Davy Jones when he made his first Daytona 500 apperance?",
+        "answer": "31 years old"
+    },
+    {
+        "id": "sample_523",
+        "Question": "How many years after Dennis Erickson's first coaching job did he become head coach for the Salt Lake Stallions?",
+        "answer": "50"
+    },
+    {
+        "id": "sample_524",
+        "Question": "In what year did Dennis Erickson receive his second national champion award?",
+        "answer": "1991"
+    },
+    {
+        "id": "sample_525",
+        "Question": "When was the last year that Dennis Erickson coached for an NFL team?",
+        "answer": "2004"
+    },
+    {
+        "id": "sample_526",
+        "Question": "How many years did Dennis Erickson worked as Head coach for Idaho from 1982?",
+        "answer": "3 Years"
+    },
+    {
+        "id": "sample_527",
+        "Question": "How many times did Dennis Erickson was won Big East Coach of the Year from 1985?",
+        "answer": "3 Times (1991, 1992, 1994)"
+    },
+    {
+        "id": "sample_528",
+        "Question": "What was the age when Dennis Erickson won Big Sky Champion in 1985?",
+        "answer": "Age of 38"
+    },
+    {
+        "id": "sample_529",
+        "Question": "What year did Dennis Erickson coach at Billings Central Catholic High School?",
+        "answer": "1971"
+    },
+    {
+        "id": "sample_530",
+        "Question": "What was the age when Derrell Palmer awarded TCU Hall of Fame in 1978?",
+        "answer": "Age of 56"
+    },
+    {
+        "id": "sample_531",
+        "Question": "How many years did Derrell Palmer play for the Cleveland Browns?",
+        "answer": "4 years"
+    },
+    {
+        "id": "sample_532",
+        "Question": "How old was Derrell Palmer when he entered the NFL draft?",
+        "answer": "21 years old"
+    },
+    {
+        "id": "sample_533",
+        "Question": "When did Derrell Palmer last play a professional sport?",
+        "answer": "1953"
+    },
+    {
+        "id": "sample_534",
+        "Question": "How many total years did Derrell Palmer play for the NFL?",
+        "answer": "7 years"
+    },
+    {
+        "id": "sample_535",
+        "Question": "How many years ago did Derrell Palmer was died?",
+        "answer": "13 Years ago (2009)"
+    },
+    {
+        "id": "sample_536",
+        "Question": "What was the age when Derrick Brooks won NFL Defensive Player of the Year in 2002?",
+        "answer": "Age of 29"
+    },
+    {
+        "id": "sample_537",
+        "Question": "What year was the most illustrious of Brooks' career?",
+        "answer": "2002"
+    },
+    {
+        "id": "sample_538",
+        "Question": "For how many seasons did Brooks play for Tampa Bay?",
+        "answer": "14"
+    },
+    {
+        "id": "sample_539",
+        "Question": "When was the last time that Derrick Summers made the second team all arena?",
+        "answer": "2018"
+    },
+    {
+        "id": "sample_540",
+        "Question": "How old was Derrick Summers when he played for the Jacksonville Sharks in 2011?",
+        "answer": "23 years old"
+    },
+    {
+        "id": "sample_541",
+        "Question": "How many years did Derrick Summers have in his playing career?",
+        "answer": "8 years"
+    },
+    {
+        "id": "sample_542",
+        "Question": "How many years did Derrick Summers play for the Jacksonville Sharks?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_543",
+        "Question": "How old was Emmitt Smith when he graduated college?",
+        "answer": "20"
+    },
+    {
+        "id": "sample_544",
+        "Question": "How old was Emmitt Smith when he played in the Pro Bowl the last time?",
+        "answer": "30"
+    },
+    {
+        "id": "sample_545",
+        "Question": "How many years did Emmitt Smith play for the Dallas Cowboys?",
+        "answer": "12 years"
+    },
+    {
+        "id": "sample_546",
+        "Question": "How old was Emmitt Smith when he began playing for the Dallas Cowboys?",
+        "answer": "21 years old"
+    },
+    {
+        "id": "sample_547",
+        "Question": "What is the age when Emmitt Smith  was received the award of NFL Most Valuable Player 1993?",
+        "answer": "At the age of 24"
+    },
+    {
+        "id": "sample_548",
+        "Question": "How many years did Emmitt Smith was played for Dallas Cowboys?",
+        "answer": "12 years (1990-2002)"
+    },
+    {
+        "id": "sample_549",
+        "Question": "How long before Jeelani died did his NBA career end?",
+        "answer": "37 years"
+    },
+    {
+        "id": "sample_550",
+        "Question": "When was the last year of college for Abdul Jeelani?",
+        "answer": "1976"
+    },
+    {
+        "id": "sample_551",
+        "Question": "How long did Abdul Jeelani's playing career last?",
+        "answer": "13 years"
+    },
+    {
+        "id": "sample_552",
+        "Question": "For how many years did Abdul Jeelani play professional basketball?",
+        "answer": "13"
+    },
+    {
+        "id": "sample_553",
+        "Question": "How old was Jeelani when he first played for the Dallas Mavericks?",
+        "answer": "26"
+    },
+    {
+        "id": "sample_554",
+        "Question": "When did Abdul Jeelani start attending college?",
+        "answer": "1972"
+    },
+    {
+        "id": "sample_555",
+        "Question": "How much longer was Jeelani's NBA career than his college career?",
+        "answer": "9 years"
+    },
+    {
+        "id": "sample_556",
+        "Question": "How old was Belus Smawley when he attended Appalachian State in 1939?",
+        "answer": "21 years old"
+    },
+    {
+        "id": "sample_557",
+        "Question": "How long was Belus Smawley playing career?",
+        "answer": "6 years"
+    },
+    {
+        "id": "sample_558",
+        "Question": "How old was Smawley when he started playing for the \tSt. Louis Bombers?",
+        "answer": "28"
+    },
+    {
+        "id": "sample_559",
+        "Question": "How much longer did Smawley coach for Pembroke State than played for the Baltimore Bullets?",
+        "answer": "3 years"
+    },
+    {
+        "id": "sample_560",
+        "Question": "How long did Belus Smawley's coaching career last?",
+        "answer": "5 years"
+    },
+    {
+        "id": "sample_561",
+        "Question": "How many years did Belus Smawley was active carreer since 1946?",
+        "answer": "6 Years (1946-1952)"
+    },
+    {
+        "id": "sample_562",
+        "Question": "What year did Bill Hewitt play for the Chicago Bulls?",
+        "answer": "1974"
+    },
+    {
+        "id": "sample_563",
+        "Question": "How many years did Bill Hewitt play in his career?",
+        "answer": "6 years"
+    },
+    {
+        "id": "sample_564",
+        "Question": "How long did Bill Hewitt play for the Lakers?",
+        "answer": "1 year"
+    },
+    {
+        "id": "sample_565",
+        "Question": "How old was Hewitt when he played for the Chicago Bulls?",
+        "answer": "30"
+    },
+    {
+        "id": "sample_566",
+        "Question": "How much longer did Hewitt's NBA career last than his college career?",
+        "answer": "2 years"
+    },
+    {
+        "id": "sample_567",
+        "Question": "How many years does Bill Hewitt was in active career?",
+        "answer": "6 Years (1968–1974)"
+    },
+    {
+        "id": "sample_568",
+        "Question": "What was the age when Bill Hosket was received the award of NBA champion (1970)?",
+        "answer": "Age of 24"
+    },
+    {
+        "id": "sample_569",
+        "Question": "How much longer was Hosket's NBA career than his college career?",
+        "answer": "1 year"
+    },
+    {
+        "id": "sample_570",
+        "Question": "How many years did Bill Hosket play in his career?",
+        "answer": "4 years"
+    },
+    {
+        "id": "sample_571",
+        "Question": "What year did Bill Hosket win a gold medal in the Olympic Games?",
+        "answer": "1968"
+    },
+    {
+        "id": "sample_572",
+        "Question": "How many years did Bill Hosket was played for Buffalo Braves?",
+        "answer": "2 Years (1970-1972)"
+    },
+    {
+        "id": "sample_573",
+        "Question": "How many years after entering the NBA draft did Hosket play for the Buffalo Braves?",
+        "answer": "2"
+    },
+    {
+        "id": "sample_574",
+        "Question": "What was the age of Janice Lawrence Braxton When he played Olympic Games?",
+        "answer": "Age of 22"
+    },
+    {
+        "id": "sample_575",
+        "Question": "How many gold medals won by Janice Lawrence Braxton since 1983?",
+        "answer": "3 Gold Medals"
+    },
+    {
+        "id": "sample_576",
+        "Question": "How old was Janice Lawrence Braxton when she entered the WNBA Draft?",
+        "answer": "35 years old"
+    },
+    {
+        "id": "sample_577",
+        "Question": "How old was Braxton when she won a silver medal in Rio De Janiero?",
+        "answer": "19"
+    },
+    {
+        "id": "sample_578",
+        "Question": "How many years after winning a gold medal at the Olympic Games did Braxton play for the Cleveland Rockers?",
+        "answer": "13"
+    },
+    {
+        "id": "sample_579",
+        "Question": "What year did Janice Lawrence Braxton win a gold medal in the Olympics?",
+        "answer": "1984"
+    },
+    {
+        "id": "sample_580",
+        "Question": "What year did Marcos Leite win gold in the FIBA AmeriCup games?",
+        "answer": "1984"
+    },
+    {
+        "id": "sample_581",
+        "Question": "How many year did Marcos Leite playing career last?",
+        "answer": "22 years"
+    },
+    {
+        "id": "sample_582",
+        "Question": "How many different times did Marcos Leite play for E.C. Sírio?",
+        "answer": "3"
+    },
+    {
+        "id": "sample_583",
+        "Question": "How many years longer was Leite's playing career than his college career?",
+        "answer": "9"
+    },
+    {
+        "id": "sample_584",
+        "Question": "How old was Stéphane Antiga when he won the FIVB World Championship?",
+        "answer": "26 years old"
+    },
+    {
+        "id": "sample_585",
+        "Question": "How many years were between the time Antiga first played professionally and when he began coaching?",
+        "answer": "20"
+    },
+    {
+        "id": "sample_586",
+        "Question": "How old was Antiga when he first played for Paris Volley?",
+        "answer": "22"
+    },
+    {
+        "id": "sample_587",
+        "Question": "What World Championship did Stéphane Antiga win gold?",
+        "answer": "2014 Poland"
+    },
+    {
+        "id": "sample_588",
+        "Question": "How old was Stéphane Antiga the year he medaled in Argentina?",
+        "answer": "26"
+    },
+    {
+        "id": "sample_589",
+        "Question": "When was the last time that Blaze Riorden won a medal at the World Indoor Lacrosse Championship?",
+        "answer": "2019"
+    },
+    {
+        "id": "sample_590",
+        "Question": "How many years apart were the medals that Blaze Riorden won at the World Indoor Lacrosse Championship?",
+        "answer": "4 years"
+    },
+    {
+        "id": "sample_591",
+        "Question": "When was the most recent time that Blaze Riorden was an all star in the PLL?",
+        "answer": "2021"
+    },
+    {
+        "id": "sample_592",
+        "Question": "How many times did Blaze Riorden was won Oren Lyons Goalie of the Year from 2019?",
+        "answer": "3 Times"
+    },
+    {
+        "id": "sample_593",
+        "Question": "How many titles did Blaze Riorden earn between 2016 and 2021?",
+        "answer": "9"
+    },
+    {
+        "id": "sample_594",
+        "Question": "What was the age when Blaze Riorden won America East Defensive Player of the Year in 2016?",
+        "answer": "Age of 22"
+    },
+    {
+        "id": "sample_595",
+        "Question": "How many years ago Brandon Miller career started?",
+        "answer": "21 Years ago"
+    },
+    {
+        "id": "sample_596",
+        "Question": "How many times did Brandon Miller awarded Harry Lumley Trophy from 2008?",
+        "answer": "2 Times"
+    },
+    {
+        "id": "sample_597",
+        "Question": "When was the first time that Brandon Miller was the Mann Cup Champion?",
+        "answer": "2002"
+    },
+    {
+        "id": "sample_598",
+        "Question": "How long was it between when Brandon Miller won the Harry Lumley Trophy the first time and the last time?",
+        "answer": "12 years"
+    },
+    {
+        "id": "sample_599",
+        "Question": "What was the age when Brandon Miller won NLL All-Star award in 2007?",
+        "answer": "Age of 28"
+    },
+    {
+        "id": "sample_600",
+        "Question": "What years did Brandon Miller win more than one award?",
+        "answer": "2007, 2008, 2013, 2014"
+    }
+]
