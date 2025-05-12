@@ -1,0 +1,7 @@
+cat,count,correct,acc
+single-table,600,221,0.3683
+single table+multi text,600,51,0.0850
+multi-text,601,195,0.3245
+multi-table,602,169,0.2807
+multi-table + multi text,597,128,0.2144
+overall,3000,764,0.2547
