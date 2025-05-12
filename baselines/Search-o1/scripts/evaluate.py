@@ -237,7 +237,7 @@ def run_evaluation(filtered_data, input_list, output_list, dataset_name, output_
                 labeled_answer = item["answer"]
                 mode = 'gen'
             elif dataset_name in ['num_sports','nq', 'triviaqa', 'hotpotqa', 'musique', 'bamboogle', '2wiki']:
-                labeled_answer = item["answer"]
+                labeled_answer = item["answers"]
                 mode = 'qa'
             elif dataset_name in ['pubhealth']:
                 labeled_answer = item["answer"]
@@ -453,7 +453,7 @@ if __name__ == "__main__":
                 mode = 'gen'
                 domain = 'Unknown'
             elif dataset_name in ['num_sports','nq', 'triviaqa', 'hotpotqa', 'musique', 'bamboogle', '2wiki']:
-                labeled_answer = item["answer"]
+                labeled_answer = item["answers"]
                 mode = 'qa'
                 domain = 'Unknown'
             elif dataset_name in ['pubhealth']:
@@ -487,7 +487,7 @@ if __name__ == "__main__":
                     normal_labeled_answer = normal_item["answer"]
                     normal_mode = 'gen'
                 elif dataset_name in ['num_sports','nq', 'triviaqa', 'hotpotqa', 'musique', 'bamboogle', '2wiki']:
-                    normal_labeled_answer = normal_item["answer"]
+                    normal_labeled_answer = normal_item["answers"]
                     normal_mode = 'qa'
                 elif dataset_name in ['pubhealth']:
                     normal_labeled_answer = normal_item["answer"]

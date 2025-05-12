@@ -22,11 +22,11 @@ import spacy
 
 # ------------------- Config -------------------
 CFG = dict(
-    in_dataset   = "numsports/dataset/reformatted_merged_dataset.jsonl",
+    in_dataset   = "numsports/dataset/merged_dataset_5_4.jsonl",
     html_dir     = "numsports/wikipedia_html",
     out_dir      = "numsports/corpus/final",
     model_name   = "BAAI/bge-m3",
-    sim_thr      = 0.60,
+    sim_thr      = 0.75,
     quick_ratio_thr = 85,
     max_tok_chunk   = 100,
     overlap_tok     = 0,

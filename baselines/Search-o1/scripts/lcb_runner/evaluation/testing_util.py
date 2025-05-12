@@ -17,10 +17,13 @@ from io import StringIO
 
 # used for testing the code that reads from input
 from unittest.mock import patch, mock_open
-
-from pyext import RuntimeModule
-
+from lcb_runner.runtime_module import RuntimeModule
 from enum import Enum
+
+import types
+import sys
+
+
 
 
 def truncatefn(s, length=300):
