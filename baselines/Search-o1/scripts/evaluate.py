@@ -49,6 +49,8 @@ def normalize_answer(text):
     return text
 
 def normalize_answer_qa(s):
+    if not isinstance(s, str):
+        s = str(s)
     def remove_articles(text):
         return re.sub(r"\b(a|an|the)\b", " ", text)
     def white_space_fix(text):
@@ -236,7 +238,7 @@ def run_evaluation(filtered_data, input_list, output_list, dataset_name, output_
             elif dataset_name in ['math500', 'aime', 'amc']:
                 labeled_answer = item["answer"]
                 mode = 'gen'
-            elif dataset_name in ['num_sports','nq', 'triviaqa', 'hotpotqa', 'musique', 'bamboogle', '2wiki']:
+            elif dataset_name in ['num_sports_500','nq', 'triviaqa', 'hotpotqa', 'musique', 'bamboogle', '2wiki']:
                 labeled_answer = item["answers"]
                 mode = 'qa'
             elif dataset_name in ['pubhealth']:
@@ -452,7 +454,7 @@ if __name__ == "__main__":
                 labeled_answer = item["answer"]
                 mode = 'gen'
                 domain = 'Unknown'
-            elif dataset_name in ['num_sports','nq', 'triviaqa', 'hotpotqa', 'musique', 'bamboogle', '2wiki']:
+            elif dataset_name in ['num_sports_500','nq', 'triviaqa', 'hotpotqa', 'musique', 'bamboogle', '2wiki']:
                 labeled_answer = item["answers"]
                 mode = 'qa'
                 domain = 'Unknown'
@@ -486,7 +488,7 @@ if __name__ == "__main__":
                 elif dataset_name in ['aime', 'amc']:
                     normal_labeled_answer = normal_item["answer"]
                     normal_mode = 'gen'
-                elif dataset_name in ['num_sports','nq', 'triviaqa', 'hotpotqa', 'musique', 'bamboogle', '2wiki']:
+                elif dataset_name in ['num_sports_500','nq', 'triviaqa', 'hotpotqa', 'musique', 'bamboogle', '2wiki']:
                     normal_labeled_answer = normal_item["answers"]
                     normal_mode = 'qa'
                 elif dataset_name in ['pubhealth']:
