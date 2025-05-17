@@ -1,0 +1,103 @@
+# =========================================
+# Global Paths / Pools
+# =========================================
+model2path:
+  e5: intfloat/e5-base-v2
+  bge: BAAI/bge-m3
+  contriever: facebook/contriever
+  llama3-8B-instruct: meta-llama/Meta-Llama-3-8B-Instruct
+
+model2pooling:
+  e5: mean
+  bge: mean
+  contriever: mean
+  jina: mean
+  dpr: pooler
+
+method2index:
+  bge: FlashRAG/indexes/wiki_faiss_bge_final/bge_Flat.index
+  e5: ~
+  bm25: ~
+  contriever: ~
+
+# =========================================
+# Environment Settings
+# =========================================
+data_dir: FlashRAG/dataset/
+save_dir: FlashRAG/outputs/numsports_exp/
+gpu_id: "0"
+dataset_name: 'numsports'
+split: ["test"]
+
+
+test_sample_num: ~
+random_sample: False
+seed: 2024
+save_intermediate_data: True
+save_note: numsports_exp
+
+dtype: float16
+# =========================================
+# Retrieval Settings
+# =========================================
+retrieval_method: bge
+retrieval_model_path: BAAI/bge-m3
+index_path: FlashRAG/indexes/wiki_faiss_bge_final/bge_Flat.index
+multimodal_index_path_dict: ~
+faiss_gpu: True
+corpus_path: FlashRAG/corpus/normalized_corpus.jsonl
+instruction: ~
+retrieval_topk: 5
+retrieval_batch_size: 16
+retrieval_use_fp16: True
+retrieval_query_max_length: 128
+save_retrieval_cache: False
+use_retrieval_cache: False
+retrieval_cache_path: ~
+retrieval_pooling_method: mean
+bm25_backend: bm25s
+use_sentence_transformer: True
+silent_retrieval: True
+
+# =========================================
+# Reranker Settings
+# =========================================
+use_reranker: False
+rerank_model_name: ~
+rerank_model_path: ~
+rerank_pooling_method: ~
+rerank_topk: 5
+rerank_max_length: 128
+rerank_batch_size: 256
+rerank_use_fp16: True
+
+# =========================================
+# Generator Settings
+# =========================================
+framework: vllm
+generator_model: Qwen/Qwen2.5-7B-Instruct
+generator_model_path: .cache/hub/models/Qwen2.5-7B-Instruct
+generator_max_input_len: 8192
+generator_batch_size: 4
+generation_params:
+  max_tokens: 1024
+  temperature: 0.3
+use_fid: False
+gpu_memory_utilization: 0.9
+
+
+# =========================================
+# Evaluation Settings
+# =========================================
+metrics: [em, f1, input_tokens, retrieval_recall, retrieval_precision]
+metric_setting:
+  retrieval_recall_topk: 30
+save_metric_score: True
+
+# ✅ 补上 evaluator 类型以避免 NotImplementedError
+evaluator:
+  type: basic
+
+# ✅ IRCoT-specific 参数（可被 run_ircot_numsports.py 中 override）
+ircot:
+  max_iter: 5
