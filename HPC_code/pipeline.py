@@ -25,7 +25,7 @@ import argparse, json, os, sys, torch, textwrap
 from pathlib import Path
 
 # ---------- 环境变量 ----------
-os.environ.setdefault("HF_HOME", "/scratch/kf2365/.cache")
+
 
 # ---------- 本地模块 ----------
 ROOT = Path(__file__).parent

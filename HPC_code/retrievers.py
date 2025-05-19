@@ -19,7 +19,6 @@ from tqdm import tqdm
 
 # ────────── 环境 & 常量 ──────────
 ROOT_INDEX_DIR = "numsports/indexes"
-os.environ.setdefault("HF_HOME", "/scratch/kf2365/.cache")
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["TRANSFORMERS_NO_PROGRESS_BAR"] = "1"
 

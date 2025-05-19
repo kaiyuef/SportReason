@@ -24,7 +24,7 @@ from vllm import LLM, SamplingParams
 # ---------------------------------------------------------------------------
 # Global config
 # ---------------------------------------------------------------------------
-os.environ.setdefault("HF_HOME", "/scratch/kf2365/.cache")
+
 
 class HuggingFaceReader:
     """vLLM Reader with Continuous Batch Scheduling (CBS), optimized for hybrid QA."""

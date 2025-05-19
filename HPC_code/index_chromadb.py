@@ -24,7 +24,7 @@ from chromadb.api.types import EmbeddingFunction
 import chromadb
 from tqdm import tqdm
 
-os.environ.setdefault("HF_HOME", "/scratch/kf2365/.cache")
+os.environ.setdefault("HF_HOME", "")
 
 MAX_TEXT_LENGTH = 1000  # safety truncation (chars)
 
