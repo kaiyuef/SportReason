@@ -1,7 +1,0 @@
-cat,count,correct,acc
-single-table,600,180,0.3000
-single table+multi text,600,65,0.1083
-multi-text,601,209,0.3478
-multi-table,602,253,0.4203
-multi-table + multi text,597,137,0.2295
-overall,3000,844,0.2813
